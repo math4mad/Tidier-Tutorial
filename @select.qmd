@@ -1,0 +1,32 @@
+# `@select`  {.unnumbered}
+
+```{julia}
+include("utils.jl");
+
+```
+
+
+## 从 DataFrame 中选取 5 列数据
+```{julia}
+@chain movies begin
+    @select(title, year, length, budget, rating)
+    @slice(1:5)
+end
+```
+## 使用数字索引选取5列
+```{julia}
+@chain movies begin
+    @select(1, 2, 3, 4, 5)
+    @slice(1:5)
+end
+```
+
+## 使用区间(range) 选取 5 列
+```{julia}
+@chain movies begin
+    @select(1:5)
+    @slice(1:5)
+end
+```
+
+

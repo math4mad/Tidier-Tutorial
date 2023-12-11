@@ -1,0 +1,23 @@
+# Movie dataset {.unnumbered}
+movie dataset
+
+load movie dataset from `RDatasets.jl` package
+
+```julia
+# utils.jl
+using Tidier
+using RDatasets
+movies = dataset("ggplot2", "movies");
+```
+```{julia}
+include("utils.jl")
+@chain movies begin
+    @slice(1:5)
+end
+```
+
+```{julia}
+describe(movies)
+```
+
+

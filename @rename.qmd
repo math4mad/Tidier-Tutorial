@@ -1,0 +1,13 @@
+# `@rename` {.unnumbered}
+```{julia}
+include("utils.jl");
+```
+
+## rename using `@rename()`
+```{julia}
+@chain movies begin
+    @rename(name = title, minutes = length)
+    @select(1:5)
+    @slice(1:5)
+end
+```
