@@ -8,15 +8,18 @@ book:
   date: "12/11/2023"
   chapters:
     - index.qmd
-    - movie dataset.qmd
-    - summary.qmd
-    - references.qmd
+    - ./chapters/movie dataset.qmd
+    - ./chapters/@select.qmd
+    - ./chapters/@rename.qmd
+    - ./chapters/summary.qmd
+    #- ./chapters/references.qmd
 
-bibliography: references.bib
+#bibliography: references.bib
 
 format:
   html:
     theme: cosmo
+    toc: true
   #pdf:
     #documentclass: scrreprt
 

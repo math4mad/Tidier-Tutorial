@@ -1,6 +1,6 @@
 using Tidier;
 using RDatasets;
-using Pipe
+using Pipe;
 movies = dataset("ggplot2", "movies");
 
 # lowercase features

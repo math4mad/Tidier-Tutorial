@@ -28,5 +28,65 @@
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Summary</span>"
     ]
+  },
+  {
+    "objectID": "chapters/movie dataset.html",
+    "href": "chapters/movie dataset.html",
+    "title": "Movie dataset",
+    "section": "",
+    "text": "movie dataset\nload movie dataset from RDatasets.jl package\n# utils.jl\nusing Tidier\nusing RDatasets\nmovies = dataset(\"ggplot2\", \"movies\");\n\ninclude(\"utils.jl\")\n@chain movies begin\n    @slice(1:5)\nend\n\n5×24 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\nvotes\nr1\nr2\nr3\nr4\nr5\nr6\nr7\nr8\nr9\nr10\nmpaa\naction\nanimation\ncomedy\ndrama\ndocumentary\nromance\nshort\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\nInt32\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nCat…\nInt32\nInt32\nInt32\nInt32\nInt32\nInt32\nInt32\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n348\n4.5\n4.5\n4.5\n4.5\n14.5\n24.5\n24.5\n14.5\n4.5\n4.5\n\n0\n0\n1\n1\n0\n0\n0\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n20\n0.0\n14.5\n4.5\n24.5\n14.5\n14.5\n14.5\n4.5\n4.5\n14.5\n\n0\n0\n1\n0\n0\n0\n0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n5\n0.0\n0.0\n0.0\n0.0\n0.0\n24.5\n0.0\n44.5\n24.5\n24.5\n\n0\n1\n0\n0\n0\n0\n1\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n6\n14.5\n0.0\n0.0\n0.0\n0.0\n0.0\n0.0\n0.0\n34.5\n45.5\n\n0\n0\n1\n0\n0\n0\n0\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4\n17\n24.5\n4.5\n0.0\n14.5\n14.5\n4.5\n0.0\n0.0\n0.0\n24.5\n\n0\n0\n0\n0\n0\n0\n0\n\n\n\n\n\n\n\ndescribe(movies)\n\n24×7 DataFrame\n\n\n\nRow\nvariable\nmean\nmin\nmedian\nmax\nnmissing\neltype\n\n\n\nSymbol\nUnion…\nAny\nUnion…\nAny\nInt64\nType\n\n\n\n\n1\ntitle\n\n$\n\nxXx: State of the Union\n0\nString\n\n\n2\nyear\n1976.13\n1893\n1983.0\n2005\n0\nInt32\n\n\n3\nlength\n82.3379\n1\n90.0\n5220\n0\nInt32\n\n\n4\nbudget\n1.34125e7\n0\n3.0e6\n200000000\n53573\nUnion{Missing, Int32}\n\n\n5\nrating\n5.93285\n1.0\n6.1\n10.0\n0\nFloat64\n\n\n6\nvotes\n632.13\n5\n30.0\n157608\n0\nInt32\n\n\n7\nr1\n7.01438\n0.0\n4.5\n100.0\n0\nFloat64\n\n\n8\nr2\n4.02238\n0.0\n4.5\n84.5\n0\nFloat64\n\n\n9\nr3\n4.72116\n0.0\n4.5\n84.5\n0\nFloat64\n\n\n10\nr4\n6.37485\n0.0\n4.5\n100.0\n0\nFloat64\n\n\n11\nr5\n9.79669\n0.0\n4.5\n100.0\n0\nFloat64\n\n\n12\nr6\n13.0392\n0.0\n14.5\n84.5\n0\nFloat64\n\n\n13\nr7\n15.5481\n0.0\n14.5\n100.0\n0\nFloat64\n\n\n14\nr8\n13.876\n0.0\n14.5\n100.0\n0\nFloat64\n\n\n15\nr9\n8.95421\n0.0\n4.5\n100.0\n0\nFloat64\n\n\n16\nr10\n16.854\n0.0\n14.5\n100.0\n0\nFloat64\n\n\n17\nmpaa\n\n\n\nR\n0\nCategoricalValue{String, UInt8}\n\n\n18\naction\n0.0797442\n0\n0.0\n1\n0\nInt32\n\n\n19\nanimation\n0.0627679\n0\n0.0\n1\n0\nInt32\n\n\n20\ncomedy\n0.293784\n0\n0.0\n1\n0\nInt32\n\n\n21\ndrama\n0.371011\n0\n0.0\n1\n0\nInt32\n\n\n22\ndocumentary\n0.0590597\n0\n0.0\n1\n0\nInt32\n\n\n23\nromance\n0.0806967\n0\n0.0\n1\n0\nInt32\n\n\n24\nshort\n0.160883\n0\n0.0\n1\n0\nInt32",
+    "crumbs": [
+      "Movie dataset"
+    ]
+  },
+  {
+    "objectID": "chapters/@select.html#从-dataframe-中选取-5-列数据",
+    "href": "chapters/@select.html#从-dataframe-中选取-5-列数据",
+    "title": "@select",
+    "section": "从 DataFrame 中选取 5 列数据",
+    "text": "从 DataFrame 中选取 5 列数据\n\n@chain movies begin\n    @select(title, year, length, budget, rating)\n    @slice(1:5)\nend\n\n5×5 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4",
+    "crumbs": [
+      "`@select`"
+    ]
+  },
+  {
+    "objectID": "chapters/@select.html#使用数字索引选取5列",
+    "href": "chapters/@select.html#使用数字索引选取5列",
+    "title": "@select",
+    "section": "使用数字索引选取5列",
+    "text": "使用数字索引选取5列\n\n@chain movies begin\n    @select(1, 2, 3, 4, 5)\n    @slice(1:5)\nend\n\n5×5 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4",
+    "crumbs": [
+      "`@select`"
+    ]
+  },
+  {
+    "objectID": "chapters/@select.html#使用区间range-选取-5-列",
+    "href": "chapters/@select.html#使用区间range-选取-5-列",
+    "title": "@select",
+    "section": "使用区间(range) 选取 5 列",
+    "text": "使用区间(range) 选取 5 列\n\n@chain movies begin\n    @select(1:5)\n    @slice(1:5)\nend\n\n5×5 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4",
+    "crumbs": [
+      "`@select`"
+    ]
+  },
+  {
+    "objectID": "chapters/@rename.html#rename-using-rename",
+    "href": "chapters/@rename.html#rename-using-rename",
+    "title": "@rename",
+    "section": "rename using @rename()",
+    "text": "rename using @rename()\n\n@chain movies begin\n    @rename(name = title, minutes = length)\n    @select(1:5)\n    @slice(1:5)\nend\n\n5×5 DataFrame\n\n\n\nRow\nname\nyear\nminutes\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4",
+    "crumbs": [
+      "`@rename`"
+    ]
+  },
+  {
+    "objectID": "chapters/summary.html",
+    "href": "chapters/summary.html",
+    "title": "Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Summary"
+    ]
   }
 ]
