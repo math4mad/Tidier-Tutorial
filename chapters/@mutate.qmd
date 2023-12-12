@@ -1,0 +1,26 @@
+# `@mutate` {.unnumbered}
+
+```{julia}
+include("utils.jl");
+
+```
+
+## 1. `@mute` 添加列数据
+```{julia}
+@chain movies begin
+  @mutate(budget_millions = budget/1_000_000)
+  @select(title, budget, budget_millions)
+  @slice(1:5)
+end
+```
+## 2. 使用筛选条件进行更新
+```{julia}
+@chain movies begin
+  @filter(!ismissing(budget))
+  @mutate(nineties = year in 1990:1999)
+  @select(title, year, nineties)
+  @slice(1:5)
+end
+```
+
+

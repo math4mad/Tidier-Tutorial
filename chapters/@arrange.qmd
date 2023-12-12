@@ -1,0 +1,14 @@
+# `@arrange` {.unnumbered}
+```{julia}
+include("./utils.jl");
+```
+
+## 1. 排列
+
+```{julia}
+@chain movies begin
+  @arrange(year, rating)
+  @select(1:5)
+  @slice(1:5)
+end
+```

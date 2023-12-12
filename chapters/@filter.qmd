@@ -1,0 +1,21 @@
+# `@filter`  {.unnumbered}
+
+```{julia}
+include("utils.jl");
+```
+
+## `@filter` with tuple
+```{julia}
+@chain movies begin
+  @filter(title in ("101 Dalmatians", "102 Dalmatians"))
+  @select(1:5)
+end
+```
+也可以使用 `Array` 作为条件:
+
+```julia
+@filter(title in ["101 Dalmatians", "102 Dalmatians"])
+```
+
+
+

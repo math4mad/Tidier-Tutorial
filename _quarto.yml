@@ -8,12 +8,24 @@ book:
   date: "12/11/2023"
   chapters:
     - index.qmd
-    - ./chapters/movie dataset.qmd
-    - ./chapters/@select.qmd
-    - ./chapters/@rename.qmd
-    - ./chapters/summary.qmd
-    #- ./chapters/references.qmd
+    - part:  "Tutorial"
+      chapters:
+      - ./chapters/movie dataset.qmd
+      - ./chapters/@select.qmd
+      - ./chapters/@rename.qmd
+      - ./chapters/@mutate.qmd
+      - ./chapters/@summarize.qmd
+      - ./chapters/@filter.qmd
+      - ./chapters/@slice.qmd
+      - ./chapters/@group_by.qmd
+      - ./chapters/@arrange.qmd
+    
+    - part:  "Example"
+      chapters:
+       - ./chapters/videogame-visualization.qmd
+       - ./chapters/bad-password.qmd
 
+    - ./chapters/summary.qmd
 #bibliography: references.bib
 
 format:

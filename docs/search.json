@@ -16,6 +16,7 @@
     "section": "",
     "text": "movie dataset\nload movie dataset from RDatasets.jl package\n# utils.jl\nusing Tidier\nusing RDatasets\nmovies = dataset(\"ggplot2\", \"movies\");\n\ninclude(\"utils.jl\")\n@chain movies begin\n    @slice(1:5)\nend\n\n5×24 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\nvotes\nr1\nr2\nr3\nr4\nr5\nr6\nr7\nr8\nr9\nr10\nmpaa\naction\nanimation\ncomedy\ndrama\ndocumentary\nromance\nshort\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\nInt32\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\nCat…\nInt32\nInt32\nInt32\nInt32\nInt32\nInt32\nInt32\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n348\n4.5\n4.5\n4.5\n4.5\n14.5\n24.5\n24.5\n14.5\n4.5\n4.5\n\n0\n0\n1\n1\n0\n0\n0\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n20\n0.0\n14.5\n4.5\n24.5\n14.5\n14.5\n14.5\n4.5\n4.5\n14.5\n\n0\n0\n1\n0\n0\n0\n0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n5\n0.0\n0.0\n0.0\n0.0\n0.0\n24.5\n0.0\n44.5\n24.5\n24.5\n\n0\n1\n0\n0\n0\n0\n1\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n6\n14.5\n0.0\n0.0\n0.0\n0.0\n0.0\n0.0\n0.0\n34.5\n45.5\n\n0\n0\n1\n0\n0\n0\n0\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4\n17\n24.5\n4.5\n0.0\n14.5\n14.5\n4.5\n0.0\n0.0\n0.0\n24.5\n\n0\n0\n0\n0\n0\n0\n0\n\n\n\n\n\n\n\ndescribe(movies)\n\n24×7 DataFrame\n\n\n\nRow\nvariable\nmean\nmin\nmedian\nmax\nnmissing\neltype\n\n\n\nSymbol\nUnion…\nAny\nUnion…\nAny\nInt64\nType\n\n\n\n\n1\ntitle\n\n$\n\nxXx: State of the Union\n0\nString\n\n\n2\nyear\n1976.13\n1893\n1983.0\n2005\n0\nInt32\n\n\n3\nlength\n82.3379\n1\n90.0\n5220\n0\nInt32\n\n\n4\nbudget\n1.34125e7\n0\n3.0e6\n200000000\n53573\nUnion{Missing, Int32}\n\n\n5\nrating\n5.93285\n1.0\n6.1\n10.0\n0\nFloat64\n\n\n6\nvotes\n632.13\n5\n30.0\n157608\n0\nInt32\n\n\n7\nr1\n7.01438\n0.0\n4.5\n100.0\n0\nFloat64\n\n\n8\nr2\n4.02238\n0.0\n4.5\n84.5\n0\nFloat64\n\n\n9\nr3\n4.72116\n0.0\n4.5\n84.5\n0\nFloat64\n\n\n10\nr4\n6.37485\n0.0\n4.5\n100.0\n0\nFloat64\n\n\n11\nr5\n9.79669\n0.0\n4.5\n100.0\n0\nFloat64\n\n\n12\nr6\n13.0392\n0.0\n14.5\n84.5\n0\nFloat64\n\n\n13\nr7\n15.5481\n0.0\n14.5\n100.0\n0\nFloat64\n\n\n14\nr8\n13.876\n0.0\n14.5\n100.0\n0\nFloat64\n\n\n15\nr9\n8.95421\n0.0\n4.5\n100.0\n0\nFloat64\n\n\n16\nr10\n16.854\n0.0\n14.5\n100.0\n0\nFloat64\n\n\n17\nmpaa\n\n\n\nR\n0\nCategoricalValue{String, UInt8}\n\n\n18\naction\n0.0797442\n0\n0.0\n1\n0\nInt32\n\n\n19\nanimation\n0.0627679\n0\n0.0\n1\n0\nInt32\n\n\n20\ncomedy\n0.293784\n0\n0.0\n1\n0\nInt32\n\n\n21\ndrama\n0.371011\n0\n0.0\n1\n0\nInt32\n\n\n22\ndocumentary\n0.0590597\n0\n0.0\n1\n0\nInt32\n\n\n23\nromance\n0.0806967\n0\n0.0\n1\n0\nInt32\n\n\n24\nshort\n0.160883\n0\n0.0\n1\n0\nInt32",
     "crumbs": [
+      "Tutorial",
       "Movie dataset"
     ]
   },
@@ -26,6 +27,7 @@
     "section": "从 DataFrame 中选取 5 列数据",
     "text": "从 DataFrame 中选取 5 列数据\n\n@chain movies begin\n    @select(title, year, length, budget, rating)\n    @slice(1:5)\nend\n\n5×5 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4",
     "crumbs": [
+      "Tutorial",
       "`@select`"
     ]
   },
@@ -36,6 +38,7 @@
     "section": "使用数字索引选取5列",
     "text": "使用数字索引选取5列\n\n@chain movies begin\n    @select(1, 2, 3, 4, 5)\n    @slice(1:5)\nend\n\n5×5 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4",
     "crumbs": [
+      "Tutorial",
       "`@select`"
     ]
   },
@@ -46,6 +49,7 @@
     "section": "使用区间(range) 选取 5 列",
     "text": "使用区间(range) 选取 5 列\n\n@chain movies begin\n    @select(1:5)\n    @slice(1:5)\nend\n\n5×5 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4",
     "crumbs": [
+      "Tutorial",
       "`@select`"
     ]
   },
@@ -56,7 +60,305 @@
     "section": "rename using @rename()",
     "text": "rename using @rename()\n\n@chain movies begin\n    @rename(name = title, minutes = length)\n    @select(1:5)\n    @slice(1:5)\nend\n\n5×5 DataFrame\n\n\n\nRow\nname\nyear\nminutes\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4",
     "crumbs": [
+      "Tutorial",
       "`@rename`"
+    ]
+  },
+  {
+    "objectID": "chapters/@mutate.html#mute-添加列数据",
+    "href": "chapters/@mutate.html#mute-添加列数据",
+    "title": "@mutate",
+    "section": "1. @mute 添加列数据",
+    "text": "1. @mute 添加列数据\n\n@chain movies begin\n  @mutate(budget_millions = budget/1_000_000)\n  @select(title, budget, budget_millions)\n  @slice(1:5)\nend\n\n5×3 DataFrame\n\n\n\nRow\ntitle\nbudget\nbudget_millions\n\n\n\nString\nInt32?\nFloat64?\n\n\n\n\n1\n$\nmissing\nmissing\n\n\n2\n$1000 a Touchdown\nmissing\nmissing\n\n\n3\n$21 a Day Once a Month\nmissing\nmissing\n\n\n4\n$40,000\nmissing\nmissing\n\n\n5\n$50,000 Climax Show, The\nmissing\nmissing",
+    "crumbs": [
+      "Tutorial",
+      "`@mutate`"
+    ]
+  },
+  {
+    "objectID": "chapters/@mutate.html#使用筛选条件进行更新",
+    "href": "chapters/@mutate.html#使用筛选条件进行更新",
+    "title": "@mutate",
+    "section": "2. 使用筛选条件进行更新",
+    "text": "2. 使用筛选条件进行更新\n\n@chain movies begin\n  @filter(!ismissing(budget))\n  @mutate(nineties = year in 1990:1999)\n  @select(title, year, nineties)\n  @slice(1:5)\nend\n\n5×3 DataFrame\n\n\n\nRow\ntitle\nyear\nnineties\n\n\n\nString\nInt32\nBool\n\n\n\n\n1\n'G' Men\n1935\nfalse\n\n\n2\n'Manos' the Hands of Fate\n1966\nfalse\n\n\n3\n'Til There Was You\n1997\ntrue\n\n\n4\n.com for Murder\n2002\nfalse\n\n\n5\n10 Things I Hate About You\n1999\ntrue",
+    "crumbs": [
+      "Tutorial",
+      "`@mutate`"
+    ]
+  },
+  {
+    "objectID": "chapters/@summarize.html#using-summarize-聚合显示总电影数",
+    "href": "chapters/@summarize.html#using-summarize-聚合显示总电影数",
+    "title": "@summarize",
+    "section": "1. using summarize() 聚合显示总电影数",
+    "text": "1. using summarize() 聚合显示总电影数\n\n@chain movies begin\n    @summarize(n = nrow())\nend\n\n1×1 DataFrame\n\n\n\nRow\nn\n\n\n\nInt64\n\n\n\n\n1\n58788",
+    "crumbs": [
+      "Tutorial",
+      "`@summarize`"
+    ]
+  },
+  {
+    "objectID": "chapters/@summarize.html#使用-summarize-显示电影均值和中位数",
+    "href": "chapters/@summarize.html#使用-summarize-显示电影均值和中位数",
+    "title": "@summarize",
+    "section": "2. 使用 @summarize() 显示电影均值和中位数",
+    "text": "2. 使用 @summarize() 显示电影均值和中位数\n\n@chain movies begin\n  @mutate(budget = budget / 1_000_000)\n  @summarize(median_budget = median(skipmissing(budget)),\n             mean_budget = mean(skipmissing(budget)))\n  \nend\n\n1×2 DataFrame\n\n\n\nRow\nmedian_budget\nmean_budget\n\n\n\nFloat64\nFloat64\n\n\n\n\n1\n3.0\n13.4125",
+    "crumbs": [
+      "Tutorial",
+      "`@summarize`"
+    ]
+  },
+  {
+    "objectID": "chapters/@summarize.html#联合使用-group_by和summarize",
+    "href": "chapters/@summarize.html#联合使用-group_by和summarize",
+    "title": "@summarize",
+    "section": "3. 联合使用 @group_by和@summarize()",
+    "text": "3. 联合使用 @group_by和@summarize()\n\n@chain movies begin\n  @group_by(year)\n  @summarise(n = nrow())\n  @arrange(desc(year))\n  @slice(1:5)\nend\n\n5×2 DataFrame\n\n\n\nRow\nyear\nn\n\n\n\nInt32\nInt64\n\n\n\n\n1\n2005\n349\n\n\n2\n2004\n1945\n\n\n3\n2003\n2158\n\n\n4\n2002\n2168\n\n\n5\n2001\n2121",
+    "crumbs": [
+      "Tutorial",
+      "`@summarize`"
+    ]
+  },
+  {
+    "objectID": "chapters/@filter.html#filter-with-tuple",
+    "href": "chapters/@filter.html#filter-with-tuple",
+    "title": "@filter",
+    "section": "@filter with tuple",
+    "text": "@filter with tuple\n\n@chain movies begin\n  @filter(title in (\"101 Dalmatians\", \"102 Dalmatians\"))\n  @select(1:5)\nend\n\n2×5 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n101 Dalmatians\n1996\n103\nmissing\n5.5\n\n\n2\n102 Dalmatians\n2000\n100\n85000000\n4.7\n\n\n\n\n\n\n也可以使用 Array 作为条件:\n@filter(title in [\"101 Dalmatians\", \"102 Dalmatians\"])",
+    "crumbs": [
+      "Tutorial",
+      "`@filter`"
+    ]
+  },
+  {
+    "objectID": "chapters/@slice.html#简单实例",
+    "href": "chapters/@slice.html#简单实例",
+    "title": "@slice",
+    "section": "1. 简单实例",
+    "text": "1. 简单实例\n\n@chain movies begin\n    @slice(1:5)\n    @select(1:5)\nend\n\n5×5 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n\n\n2\n$1000 a Touchdown\n1939\n71\nmissing\n6.0\n\n\n3\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n\n\n4\n$40,000\n1996\n70\nmissing\n8.2\n\n\n5\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4",
+    "crumbs": [
+      "Tutorial",
+      "`@slice`"
+    ]
+  },
+  {
+    "objectID": "chapters/@slice.html#使用-range作为条件",
+    "href": "chapters/@slice.html#使用-range作为条件",
+    "title": "@slice",
+    "section": "2. 使用 range作为条件",
+    "text": "2. 使用 range作为条件\n\n@chain movies begin\n  @slice(range(start = 1, step = 2, stop = 7))\n  @select(1:5)\nend\n\n4×5 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\n$\n1971\n121\nmissing\n6.4\n\n\n2\n$21 a Day Once a Month\n1941\n7\nmissing\n8.2\n\n\n3\n$50,000 Climax Show, The\n1975\n71\nmissing\n3.4\n\n\n4\n$windle\n2002\n93\nmissing\n5.3\n\n\n\n\n\n\nJulia的range 都可以使用,例如:\n\n@chain movies begin\n  @slice(1:2:7)\n  @select(1:4)\nend\n\n4×4 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\n\n\n\nString\nInt32\nInt32\nInt32?\n\n\n\n\n1\n$\n1971\n121\nmissing\n\n\n2\n$21 a Day Once a Month\n1941\n7\nmissing\n\n\n3\n$50,000 Climax Show, The\n1975\n71\nmissing\n\n\n4\n$windle\n2002\n93\nmissing",
+    "crumbs": [
+      "Tutorial",
+      "`@slice`"
+    ]
+  },
+  {
+    "objectID": "chapters/@group_by.html#联合使用group_by-mutate",
+    "href": "chapters/@group_by.html#联合使用group_by-mutate",
+    "title": "@group_by",
+    "section": "1. 联合使用@group_by() , @mutate()",
+    "text": "1. 联合使用@group_by() , @mutate()\n@group_by() 对原始 dataframe 分组后, @mutate() 在每个 subgroup-dataframe中 分别执行操作\n下面操作按照年为单位计算电影评分均值:\n\ndf2=@chain movies begin\n    @group_by(year)\n    @mutate(mean_yearly_rating = mean(skipmissing(rating)))\n    @select(year,rating, mean_yearly_rating)\n    @ungroup   #合并 subgroup dataframe\n    @slice(1:5)\nend\n\n5×3 DataFrame\n\n\n\nRow\nyear\nrating\nmean_yearly_rating\n\n\n\nInt32\nFloat64\nFloat64\n\n\n\n\n1\n1971\n6.4\n5.66517\n\n\n2\n1971\n6.1\n5.66517\n\n\n3\n1971\n7.2\n5.66517\n\n\n4\n1971\n6.1\n5.66517\n\n\n5\n1971\n8.9\n5.66517",
+    "crumbs": [
+      "Tutorial",
+      "`@group_by`"
+    ]
+  },
+  {
+    "objectID": "chapters/@arrange.html#排列",
+    "href": "chapters/@arrange.html#排列",
+    "title": "@arrange",
+    "section": "1. 排列",
+    "text": "1. 排列\n\n@chain movies begin\n  @arrange(year, rating)\n  @select(1:5)\n  @slice(1:5)\nend\n\n5×5 DataFrame\n\n\n\nRow\ntitle\nyear\nlength\nbudget\nrating\n\n\n\nString\nInt32\nInt32\nInt32?\nFloat64\n\n\n\n\n1\nBlacksmith Scene\n1893\n1\nmissing\n7.0\n\n\n2\nHadj Cheriff\n1894\n1\nmissing\n4.1\n\n\n3\nGlenroy Bros., No. 2\n1894\n1\nmissing\n4.2\n\n\n4\nLeonard-Cushing Fight\n1894\n1\nmissing\n4.4\n\n\n5\nSioux Ghost Dance\n1894\n1\nmissing\n4.4",
+    "crumbs": [
+      "Tutorial",
+      "`@arrange`"
+    ]
+  },
+  {
+    "objectID": "chapters/videogame-visualization.html#load-dependence",
+    "href": "chapters/videogame-visualization.html#load-dependence",
+    "title": "VideoGame Data Visualization",
+    "section": "1. load dependence",
+    "text": "1. load dependence\n\ninclude(\"utils.jl\");",
+    "crumbs": [
+      "Example",
+      "VideoGame Data Visualization"
+    ]
+  },
+  {
+    "objectID": "chapters/videogame-visualization.html#peek-data",
+    "href": "chapters/videogame-visualization.html#peek-data",
+    "title": "VideoGame Data Visualization",
+    "section": "2. peek data",
+    "text": "2. peek data\n\n@chain vgd begin\n    @slice(1:6)\nend\n\n6×11 DataFrame\n\n\n\nRow\nrank\nname\nplatform\nyear\ngenre\npublisher\nna_sales\neu_sales\njp_sales\nother_sales\nglobal_sales\n\n\n\nInt64\nString\nString7\nString7\nString15\nString\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\n\n\n\n\n1\n1\nWii Sports\nWii\n2006\nSports\nNintendo\n41.49\n29.02\n3.77\n8.46\n82.74\n\n\n2\n2\nSuper Mario Bros.\nNES\n1985\nPlatform\nNintendo\n29.08\n3.58\n6.81\n0.77\n40.24\n\n\n3\n3\nMario Kart Wii\nWii\n2008\nRacing\nNintendo\n15.85\n12.88\n3.79\n3.31\n35.82\n\n\n4\n4\nWii Sports Resort\nWii\n2009\nSports\nNintendo\n15.75\n11.01\n3.28\n2.96\n33.0\n\n\n5\n5\nPokemon Red/Pokemon Blue\nGB\n1996\nRole-Playing\nNintendo\n11.27\n8.89\n10.22\n1.0\n31.37\n\n\n6\n6\nTetris\nGB\n1989\nPuzzle\nNintendo\n23.2\n2.26\n4.22\n0.58\n30.26\n\n\n\n\n\n\n\ndf=vgd;",
+    "crumbs": [
+      "Example",
+      "VideoGame Data Visualization"
+    ]
+  },
+  {
+    "objectID": "chapters/videogame-visualization.html#data-visualization",
+    "href": "chapters/videogame-visualization.html#data-visualization",
+    "title": "VideoGame Data Visualization",
+    "section": "3. data visualization",
+    "text": "3. data visualization\n\n3.1 What genre games have been made the most?\n\ndf1=@chain df begin\n    @group_by(genre)\n    @summarize(counts =nrow())\n    @arrange(desc(counts))\nend\n\n12×2 DataFrame\n\n\n\nRow\ngenre\ncounts\n\n\n\nString15\nInt64\n\n\n\n\n1\nAction\n3316\n\n\n2\nSports\n2346\n\n\n3\nMisc\n1739\n\n\n4\nRole-Playing\n1488\n\n\n5\nShooter\n1310\n\n\n6\nAdventure\n1286\n\n\n7\nRacing\n1249\n\n\n8\nPlatform\n886\n\n\n9\nSimulation\n867\n\n\n10\nFighting\n848\n\n\n11\nStrategy\n681\n\n\n12\nPuzzle\n582\n\n\n\n\n\n\n\nfunction plot_df3_1(df::AbstractDataFrame)\n    rows,_=size(df)\n    featrues=names(df)\n    fig=Figure(resolution=(500,600))\n    ax=Axis(fig[1,1],title=\"counts of game by genre\")\n    ax.yticks=(1:rows,df.genre)\n    #ax.xticklabelrotation = pi/2\n    ax.xlabel=\"counts\"\n    ax.ylabel=\"genre\"\n    GLMakie.barplot!(ax,1:rows,df.counts;color = df.counts, strokecolor = :black, strokewidth = 1,direction=:x)\n    GLMakie.hidedecorations!(ax,label = false, ticklabels = false, ticks = false)\n    fig\nend\nplot_df3_1(df1)\n\n\n\n\n\n\n\n\n\n\n3.2 Which year had the most game release?\n\ndf2=@chain df begin\n    @group_by(year)\n    @summarize(counts =nrow())\n    @arrange(desc(counts))\nend\n\n40×2 DataFrame15 rows omitted\n\n\n\nRow\nyear\ncounts\n\n\n\nString7\nInt64\n\n\n\n\n1\n2009\n1431\n\n\n2\n2008\n1428\n\n\n3\n2010\n1259\n\n\n4\n2007\n1202\n\n\n5\n2011\n1139\n\n\n6\n2006\n1008\n\n\n7\n2005\n941\n\n\n8\n2002\n829\n\n\n9\n2003\n775\n\n\n10\n2004\n763\n\n\n11\n2012\n657\n\n\n12\n2015\n614\n\n\n13\n2014\n582\n\n\n⋮\n⋮\n⋮\n\n\n29\n1982\n36\n\n\n30\n1986\n21\n\n\n31\n1989\n17\n\n\n32\n1983\n17\n\n\n33\n1990\n16\n\n\n34\n1987\n16\n\n\n35\n1988\n15\n\n\n36\n1985\n14\n\n\n37\n1984\n14\n\n\n38\n1980\n9\n\n\n39\n2017\n3\n\n\n40\n2020\n1\n\n\n\n\n\n\n\nfunction plot_df3_2(df::AbstractDataFrame,cat::String=\"year\")\n    @assert names(df)[2]==\"counts\"\n    rows=nrow(df)\n    fig=Figure(resolution=(500,800))\n    ax=Axis(fig[1,1],title=\"count game by year\")\n    ax.yticks=(1:rows,df[:,cat])\n    #ax.xticklabelrotation = pi/2\n    ax.xlabel=\"counts\"\n    ax.ylabel=\"$cat\"\n    GLMakie.barplot!(ax,1:rows,df.counts;color = df.counts, strokecolor = :black, strokewidth = 1,direction=:x)\n    GLMakie.hidedecorations!(ax,label = false, ticklabels = false, ticks = false)\n    fig\nend\n\nplot_df3_2(df2)\n\n\n\n\n\n\n\n\n\n\n3.3 Top 5 years games release by genre\n\n\"\"\"\nloading ....\n\"\"\"\n\n\"loading ....\\n\"\n\n\n\n\n3.4 Which year had the highest sales worldwide?\n\ndf4=@chain df begin\n    @group_by(year)\n    @summarize(sales =sum(global_sales))\n    @arrange(desc(sales))\nend\n\n40×2 DataFrame15 rows omitted\n\n\n\nRow\nyear\nsales\n\n\n\nString7\nFloat64\n\n\n\n\n1\n2008\n678.9\n\n\n2\n2009\n667.3\n\n\n3\n2007\n611.13\n\n\n4\n2010\n600.45\n\n\n5\n2006\n521.04\n\n\n6\n2011\n515.99\n\n\n7\n2005\n459.94\n\n\n8\n2004\n419.31\n\n\n9\n2002\n395.52\n\n\n10\n2013\n368.11\n\n\n11\n2012\n363.54\n\n\n12\n2003\n357.85\n\n\n13\n2014\n337.05\n\n\n⋮\n⋮\n⋮\n\n\n29\n1990\n49.39\n\n\n30\n1988\n47.22\n\n\n31\n1993\n45.98\n\n\n32\n1986\n37.07\n\n\n33\n1981\n35.77\n\n\n34\n1991\n32.23\n\n\n35\n1982\n28.86\n\n\n36\n1987\n21.74\n\n\n37\n1983\n16.79\n\n\n38\n1980\n11.38\n\n\n39\n2020\n0.29\n\n\n40\n2017\n0.05\n\n\n\n\n\n\n\nfunction plot_df3_4(df::AbstractDataFrame)\n    rows=nrow(df)\n    fig=Figure(resolution=(500,700))\n    ax=Axis(fig[1,1],title=\"video game global sales\")\n    ax.yticks=(1:rows,df[:,\"year\"])\n    #ax.xticklabelrotation = pi/2\n    ax.xlabel=\"sales\"\n    ax.ylabel=\"year\"\n    GLMakie.barplot!(ax,1:rows,df.sales;color = df.sales, strokecolor = :black, strokewidth = 1,direction=:x)\n    GLMakie.hidedecorations!(ax,label = false, ticklabels = false, ticks = false)\n    fig\nend\nplot_df3_4(df4)\n\n\n\n\n\n\n\n\n\n\n3.5 Which genre game has been released the most in a single year?\n\ndf5=@chain df begin\n    @group_by(year,genre)\n    @summarize(counts =nrow())\n    @arrange(desc(counts)) # 在每个组中按数量降序排列\n    @slice(1)              # 每组最多发布游戏的一行\n    @ungroup\nend\n\n40×3 DataFrame15 rows omitted\n\n\n\nRow\nyear\ngenre\ncounts\n\n\n\nString7\nString15\nInt64\n\n\n\n\n1\n2009\nAction\n272\n\n\n2\n2012\nAction\n266\n\n\n3\n2015\nAction\n255\n\n\n4\n2011\nAction\n239\n\n\n5\n2010\nAction\n226\n\n\n6\n2008\nAction\n221\n\n\n7\n2007\nAction\n211\n\n\n8\n2005\nAction\n192\n\n\n9\n2002\nSports\n188\n\n\n10\n2014\nAction\n186\n\n\n11\n2006\nAction\n184\n\n\n12\n2013\nAction\n148\n\n\n13\n2003\nAction\n144\n\n\n⋮\n⋮\n⋮\n⋮\n\n\n29\n1991\nSports\n7\n\n\n30\n1983\nAction\n7\n\n\n31\n1986\nAction\n6\n\n\n32\n1989\nPuzzle\n5\n\n\n33\n1985\nPlatform\n4\n\n\n34\n1988\nPlatform\n4\n\n\n35\n1987\nSports\n4\n\n\n36\n1980\nMisc\n4\n\n\n37\n1984\nShooter\n3\n\n\n38\n1990\nPlatform\n3\n\n\n39\n2017\nRole-Playing\n2\n\n\n40\n2020\nSimulation\n1\n\n\n\n\n\n\n\n    function plot_df3_5(df::AbstractDataFrame)\n    #@assert names(df)[2]==\"counts\"\n    rows=nrow(df)\n    fig=Figure(resolution=(1000,900))\n    ax=Axis(fig[1,1],title=\"video game most release in single year\")\n    ax.yticks=(1:rows,df[:,\"year\"])\n    #ax.xticklabelrotation = pi/2\n    ax.xlabel=\"release\"\n    ax.ylabel=\"year\"\n    GLMakie.barplot!(ax,1:rows,df.counts;color = df.counts, strokecolor = :black, strokewidth = 1,direction=:x\n    \n    )\n    for (idx, row) in enumerate(eachrow(df))\n        counts,year,genre=row.counts,row.year,row.genre\n        GLMakie.text!(ax,counts+2,idx; text=\"$genre-$year\",align = (:left, :center),fontsize=8)\n    end\n    \n    GLMakie.hidedecorations!(ax,label = false, ticklabels = false, ticks = false)\n    fig\nend    \n plot_df3_5(df5)\n\n\n\n\n\n\n\n\n\n3.6 Which genre game has sold the most in a single year?\n\ndf6=@chain df begin\n    @group_by(year,genre)\n    @summarize(sales =sum(global_sales))\n    @arrange(desc(sales)) # 在每个组中按全球销售额降序排列\n    @slice(1)              # 每组销量最多的\n    @ungroup\nend\n\n40×3 DataFrame15 rows omitted\n\n\n\nRow\nyear\ngenre\nsales\n\n\n\nString7\nString15\nFloat64\n\n\n\n\n1\n2009\nAction\n139.36\n\n\n2\n2008\nAction\n136.39\n\n\n3\n2006\nSports\n136.16\n\n\n4\n2013\nAction\n125.22\n\n\n5\n2012\nAction\n122.04\n\n\n6\n2011\nAction\n118.96\n\n\n7\n2010\nAction\n117.64\n\n\n8\n2007\nAction\n106.5\n\n\n9\n2014\nAction\n99.02\n\n\n10\n2002\nAction\n86.77\n\n\n11\n2005\nAction\n85.69\n\n\n12\n2004\nAction\n76.26\n\n\n13\n2015\nAction\n70.7\n\n\n⋮\n⋮\n⋮\n⋮\n\n\n29\n1993\nPlatform\n18.67\n\n\n30\n1995\nPlatform\n16.69\n\n\n31\n1992\nFighting\n15.25\n\n\n32\n1981\nAction\n14.84\n\n\n33\n1986\nAction\n13.74\n\n\n34\n1982\nPuzzle\n10.03\n\n\n35\n1991\nPlatform\n7.64\n\n\n36\n1980\nShooter\n7.07\n\n\n37\n1983\nPlatform\n6.93\n\n\n38\n1987\nFighting\n5.42\n\n\n39\n2020\nSimulation\n0.29\n\n\n40\n2017\nRole-Playing\n0.04\n\n\n\n\n\n\n\n\n\n3.7 Which genre game have the highest sale price globally?\n\ndf7=@chain df begin\n    @group_by(genre)\n    @summarize(sales =sum(global_sales))\n    @arrange(desc(sales)) # 在每个组中按全球销售额降序排列\n             # 每组销量最对的\n    @ungroup\nend\n\n12×2 DataFrame\n\n\n\nRow\ngenre\nsales\n\n\n\nString15\nFloat64\n\n\n\n\n1\nAction\n1751.18\n\n\n2\nSports\n1330.93\n\n\n3\nShooter\n1037.37\n\n\n4\nRole-Playing\n927.37\n\n\n5\nPlatform\n831.37\n\n\n6\nMisc\n809.96\n\n\n7\nRacing\n732.04\n\n\n8\nFighting\n448.91\n\n\n9\nSimulation\n392.2\n\n\n10\nPuzzle\n244.95\n\n\n11\nAdventure\n239.04\n\n\n12\nStrategy\n175.12\n\n\n\n\n\n\n\nfunction plot_df3_7(df::AbstractDataFrame)\n    #@assert names(df)[2]==\"counts\"\n    rows=nrow(df)\n    fig=Figure(resolution=(800,500))\n    ax=Axis(fig[1,1],title=\"video game sales champion by genre\")\n    ax.yticks=(1:rows,df[:,\"genre\"])\n    #ax.xticklabelrotation = pi/2\n    ax.xlabel=\"sales\"\n    ax.ylabel=\"genre\"\n    GLMakie.barplot!(ax,1:rows,df.sales;color = df.sales, strokecolor = :black, strokewidth = 1,direction=:x,\n    bar_labels=:y )\n    GLMakie.hidedecorations!(ax,label = false, ticklabels = false, ticks = false)\n    fig\nend\nplot_df3_7(df7)\n\n\n\n\n\n\n\n\n\n\n3.8 Which platfrom have the highest sale price globally?\n\ndf8=@chain df begin\n    @group_by(platform)\n    @summarize(sales =sum(global_sales))\n    @arrange(desc(sales)) # 在每个组中按全球销售额降序排列\n    @ungroup\nend\n\n31×2 DataFrame6 rows omitted\n\n\n\nRow\nplatform\nsales\n\n\n\nString7\nFloat64\n\n\n\n\n1\nPS2\n1255.64\n\n\n2\nX360\n979.96\n\n\n3\nPS3\n957.84\n\n\n4\nWii\n926.71\n\n\n5\nDS\n822.49\n\n\n6\nPS\n730.66\n\n\n7\nGBA\n318.5\n\n\n8\nPSP\n296.28\n\n\n9\nPS4\n278.1\n\n\n10\nPC\n258.82\n\n\n11\nXB\n258.26\n\n\n12\nGB\n255.45\n\n\n13\nNES\n251.07\n\n\n⋮\n⋮\n⋮\n\n\n20\nWiiU\n81.86\n\n\n21\nPSV\n61.93\n\n\n22\nSAT\n33.59\n\n\n23\nGEN\n28.36\n\n\n24\nDC\n15.97\n\n\n25\nSCD\n1.87\n\n\n26\nNG\n1.44\n\n\n27\nWS\n1.42\n\n\n28\nTG16\n0.16\n\n\n29\n3DO\n0.1\n\n\n30\nGG\n0.04\n\n\n31\nPCFX\n0.03\n\n\n\n\n\n\n\nfunction plot_df3_8(df::AbstractDataFrame)\n    #@assert names(df)[2]==\"counts\"\n    rows=nrow(df)\n    fig=Figure(resolution=(600,800))\n    ax=Axis(fig[1,1],title=\"video game sales by Platform\")\n    ax.yticks=(1:rows,df[:,\"platform\"])\n    #ax.xticklabelrotation = pi/2\n    ax.xlabel=\"sales\"\n    ax.ylabel=\"platform\"\n    GLMakie.barplot!(ax,1:rows,df.sales;color = df.sales, strokecolor = :black, strokewidth = 1,direction=:x,\n    bar_labels=:y )\n    GLMakie.hidedecorations!(ax,label = false, ticklabels = false, ticks = false)\n    fig\nend\n\nplot_df3_8(df8)\n\n\n\n\n\n\n\n\n\n\n3.9 Which individual game have the highest sale price globally?\n\ndf9=@chain df begin\n    @select(name,year,global_sales)\n    @arrange(desc(global_sales)) # 在每个组中按全球销售额降序排列\n    @slice(1:20)\nend\n\n20×3 DataFrame\n\n\n\nRow\nname\nyear\nglobal_sales\n\n\n\nString\nString7\nFloat64\n\n\n\n\n1\nWii Sports\n2006\n82.74\n\n\n2\nSuper Mario Bros.\n1985\n40.24\n\n\n3\nMario Kart Wii\n2008\n35.82\n\n\n4\nWii Sports Resort\n2009\n33.0\n\n\n5\nPokemon Red/Pokemon Blue\n1996\n31.37\n\n\n6\nTetris\n1989\n30.26\n\n\n7\nNew Super Mario Bros.\n2006\n30.01\n\n\n8\nWii Play\n2006\n29.02\n\n\n9\nNew Super Mario Bros. Wii\n2009\n28.62\n\n\n10\nDuck Hunt\n1984\n28.31\n\n\n11\nNintendogs\n2005\n24.76\n\n\n12\nMario Kart DS\n2005\n23.42\n\n\n13\nPokemon Gold/Pokemon Silver\n1999\n23.1\n\n\n14\nWii Fit\n2007\n22.72\n\n\n15\nWii Fit Plus\n2009\n22.0\n\n\n16\nKinect Adventures!\n2010\n21.82\n\n\n17\nGrand Theft Auto V\n2013\n21.4\n\n\n18\nGrand Theft Auto: San Andreas\n2004\n20.81\n\n\n19\nSuper Mario World\n1990\n20.61\n\n\n20\nBrain Age: Train Your Brain in Minutes a Day\n2005\n20.22\n\n\n\n\n\n\n\nfunction plot_top20_game(df::AbstractDataFrame)\n    #@assert names(df)[2]==\"counts\"\n    rows=nrow(df)\n    fig=Figure(resolution=(800,800))\n    ax=Axis(fig[1,1],title=\"global sales top 20\")\n    ax.yticks=(1:rows,df[:,\"name\"])\n    #ax.xticklabelrotation = pi/2\n    ax.xlabel=\"sales\"\n    ax.ylabel=\"name\"\n    GLMakie.barplot!(ax,1:rows,df.global_sales;color = df.global_sales, strokecolor = :black, strokewidth = 1,direction=:x)\n    for (idx, row) in enumerate(eachrow(df))\n        name,year,sales=row.name,row.year,row.global_sales\n        GLMakie.text!(ax,sales+2,idx; text=\"$year-$sales\",align = (:left, :center),fontsize=8)\n    end\n    GLMakie.hidedecorations!(ax,label = false, ticklabels = false, ticks = false)\n    fig\nend\nplot_top20_game(df9)\n\n\n\n\n\n\n\n\n\n\n3.10 Sales compearison by genre\n\ndf3_10=@chain df begin\n    @select(genre,na_sales,eu_sales,jp_sales,other_sales)\n    @group_by(genre)\n    @summarize(na_sales = sum(na_sales), eu_sales = sum(eu_sales),jp_sales=sum(jp_sales),other_sales=sum(other_sales))\n    @ungroup\nend\n\n12×5 DataFrame\n\n\n\nRow\ngenre\nna_sales\neu_sales\njp_sales\nother_sales\n\n\n\nString15\nFloat64\nFloat64\nFloat64\nFloat64\n\n\n\n\n1\nSports\n683.35\n376.85\n135.37\n134.97\n\n\n2\nPlatform\n447.05\n201.63\n130.77\n51.59\n\n\n3\nRacing\n359.42\n238.39\n56.69\n77.27\n\n\n4\nRole-Playing\n327.28\n188.06\n352.31\n59.61\n\n\n5\nPuzzle\n123.78\n50.78\n57.31\n12.55\n\n\n6\nMisc\n410.24\n215.98\n107.76\n75.32\n\n\n7\nShooter\n582.6\n313.27\n38.28\n102.69\n\n\n8\nSimulation\n183.31\n113.38\n63.7\n31.52\n\n\n9\nAction\n877.83\n525.0\n159.95\n187.38\n\n\n10\nFighting\n223.59\n101.32\n87.35\n36.68\n\n\n11\nAdventure\n105.8\n64.13\n52.07\n16.81\n\n\n12\nStrategy\n68.7\n45.34\n49.46\n11.36\n\n\n\n\n\n\n\nfunction plot_df3_10_heatmap(df::AbstractDataFrame)\n    genre=df.genre\n    data=@pipe select(df,Not(:genre))\n    row,col=size(data)\n    ma=@pipe Matrix(data)|&gt;round.(_,digits=1)\n    fig=Figure(resolution=(1000,400))\n    ax=Axis(fig[1,1],title=\"video game sales heatmap\")\n    ax.yticks=(1:col,names(data))\n    ax.xticks=(1:row,genre)\n    heatmap!(ax,ma)\n    [GLMakie.text!(ax,i,j;text=\"$(ma[i,j])\",align = (:center, :center),fontsize=12,color=:white) for i in 1:row,j in 1:col]\n\n    fig\nend\nplot_df3_10_heatmap(df3_10)\n\n\n\n\n\n\n\n\n\nres10=@pipe df3_10|&gt;select(_,Not(:genre))|&gt;Matrix|&gt;permutedims|&gt;reshape(_,(48,1))|&gt;_[:,1]\ncats=@pipe df3_10|&gt;select(_,Not(:genre))|&gt;names\ntype_name=df3_10.genre\ngrp=repeat(1:4, 12)\ngrp_x=repeat(1:12,inner=4)\ncolors = cgrad(:tab10)\nfunction plot_df3_10_bardodge()\n    fig=Figure(resolution=(1000,600))\n    ax=Axis(fig[1,1],title=\"video game sales  barplot dodge\",xticklabelrotation = pi/8)\n    ax.xticks=(1:12,type_name)\n    GLMakie.barplot!(ax,grp_x,res10; dodge =grp,color=colors[grp],strokecolor = :black, strokewidth = 1,bar_labels = :y,label_rotation=1/2*pi)\n    labels = [\"$i\" for i in cats]\n    elements = [PolyElement(polycolor = colors[i]) for (i,c) in enumerate(cats)]\n   Legend(fig[1,2], elements, labels, \"sales region\", orientation=:vertical, tellwidth = true, tellheight =false)\n    fig\nend\nplot_df3_10_bardodge()\n\n\n\n\n\n\n\n\n\n\n3.11 Sales compearison by platform\n\ndf3_11=@chain df begin\n    @select(platform,na_sales,eu_sales,jp_sales,other_sales)\n    @group_by(platform)\n    @summarize(na_sales = sum(na_sales), eu_sales = sum(eu_sales),jp_sales=sum(jp_sales),other_sales=sum(other_sales))\n    @ungroup\nend\n\n31×5 DataFrame6 rows omitted\n\n\n\nRow\nplatform\nna_sales\neu_sales\njp_sales\nother_sales\n\n\n\nString7\nFloat64\nFloat64\nFloat64\nFloat64\n\n\n\n\n1\nWii\n507.71\n268.38\n69.35\n80.61\n\n\n2\nNES\n125.94\n21.15\n98.65\n5.31\n\n\n3\nGB\n114.32\n47.82\n85.12\n8.2\n\n\n4\nDS\n390.71\n194.65\n175.57\n60.53\n\n\n5\nX360\n601.05\n280.58\n12.43\n85.54\n\n\n6\nPS3\n392.26\n343.71\n79.99\n141.93\n\n\n7\nPS2\n583.84\n339.29\n139.2\n193.44\n\n\n8\nSNES\n61.23\n19.04\n116.55\n3.22\n\n\n9\nGBA\n187.54\n75.25\n47.33\n7.73\n\n\n10\n3DS\n78.87\n58.52\n97.35\n12.63\n\n\n11\nPS4\n96.8\n123.7\n14.3\n43.36\n\n\n12\nN64\n139.02\n41.06\n34.22\n4.38\n\n\n13\nPS\n336.51\n213.6\n139.82\n40.91\n\n\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n\n\n20\nWiiU\n38.32\n24.23\n12.79\n6.45\n\n\n21\nGEN\n19.27\n5.52\n2.67\n0.89\n\n\n22\nDC\n5.43\n1.69\n8.56\n0.27\n\n\n23\nPSV\n16.2\n16.33\n20.96\n8.45\n\n\n24\nSAT\n0.72\n0.54\n32.26\n0.07\n\n\n25\nSCD\n1.0\n0.36\n0.45\n0.05\n\n\n26\nWS\n0.0\n0.0\n1.42\n0.0\n\n\n27\nNG\n0.0\n0.0\n1.44\n0.0\n\n\n28\nTG16\n0.0\n0.0\n0.16\n0.0\n\n\n29\n3DO\n0.0\n0.0\n0.1\n0.0\n\n\n30\nGG\n0.0\n0.0\n0.04\n0.0\n\n\n31\nPCFX\n0.0\n0.0\n0.03\n0.0\n\n\n\n\n\n\n\nlet\n    res11 = @pipe df3_11 |&gt; select(_, Not(:platform)) |&gt; Matrix |&gt; permutedims |&gt; reshape(_, (124, 1)) |&gt; _[:, 1]\n    cats = @pipe df3_11 |&gt; select(_, Not(:platform)) |&gt; names\n    type_name = df3_11.platform\n    grp = repeat(1:4, 31)\n    grp_x = repeat(1:31, inner=4)\n    colors = cgrad(:tab10)\n\n    function plot_platform_dodge()\n        fig = Figure(resolution=(1800, 600))\n        ax = Axis(fig[1, 1], title=\"video game sales by platform\", xticklabelrotation=pi / 8)\n        ax.xticks = (1:31, type_name)\n        GLMakie.barplot!(ax, grp_x, res11; dodge=grp, color=colors[grp], strokecolor=:black, strokewidth=1, bar_labels=:y, label_rotation=1 / 2 * pi)\n        labels = [\"$i\" for i in cats]\n        elements = [PolyElement(polycolor=colors[i]) for (i, c) in enumerate(cats)]\n        Legend(fig[1, 2], elements, labels, \"sales region\", orientation=:vertical, tellwidth=true, tellheight=false)\n        fig\n    end\n\n   plot_platform_dodge()\nend\n\n\n\n\n\n\n\n\n\n\n3.12 Top 20 Publisher\n\ndf12=@chain df begin\n    @group_by(publisher)\n    @summarize(counts =nrow())\n    @arrange(desc(counts))\n    @slice 1:20\nend\n\n20×2 DataFrame\n\n\n\nRow\npublisher\ncounts\n\n\n\nString\nInt64\n\n\n\n\n1\nElectronic Arts\n1351\n\n\n2\nActivision\n975\n\n\n3\nNamco Bandai Games\n932\n\n\n4\nUbisoft\n921\n\n\n5\nKonami Digital Entertainment\n832\n\n\n6\nTHQ\n715\n\n\n7\nNintendo\n703\n\n\n8\nSony Computer Entertainment\n683\n\n\n9\nSega\n639\n\n\n10\nTake-Two Interactive\n413\n\n\n11\nCapcom\n381\n\n\n12\nAtari\n363\n\n\n13\nTecmo Koei\n338\n\n\n14\nSquare Enix\n233\n\n\n15\nWarner Bros. Interactive Entertainment\n232\n\n\n16\nDisney Interactive Studios\n218\n\n\n17\nUnknown\n203\n\n\n18\nEidos Interactive\n198\n\n\n19\nMidway Games\n198\n\n\n20\n505 Games\n192\n\n\n\n\n\n\n\nfunction plot_top20_publisher(df::AbstractDataFrame)\n    #@assert names(df)[2]==\"counts\"\n    rows=nrow(df)\n    fig=Figure(resolution=(800,800))\n    ax=Axis(fig[1,1],title=\"global sales top 20\")\n    ax.yticks=(1:rows,df[:,\"publisher\"])\n    #ax.xticklabelrotation = pi/2\n    ax.xlabel=\"counts\"\n    ax.ylabel=\"publiser\"\n    GLMakie.barplot!(ax,1:rows,df.counts;color = df.counts, strokecolor = :black, strokewidth = 1,direction=:x)\n    for (idx, row) in enumerate(eachrow(df))\n        publisher,counts=row.publisher,row.counts\n        GLMakie.text!(ax,counts+2,idx; text=\"$counts\",align = (:left, :center),fontsize=8)\n    end\n    GLMakie.hidedecorations!(ax,label = false, ticklabels = false, ticks = false)\n    fig\nend\nplot_top20_publisher(df12)\n\n\n\n\n\n\n\n\n\n\n3.13 Top global sales by publisher\n\ndf13=@chain df begin\n    @group_by publisher \n    @summarize sales=sum(global_sales)\n    @arrange desc(sales)\n    @slice 1:20\nend\n\n20×2 DataFrame\n\n\n\nRow\npublisher\nsales\n\n\n\nString\nFloat64\n\n\n\n\n1\nNintendo\n1786.56\n\n\n2\nElectronic Arts\n1110.32\n\n\n3\nActivision\n727.46\n\n\n4\nSony Computer Entertainment\n607.5\n\n\n5\nUbisoft\n474.72\n\n\n6\nTake-Two Interactive\n399.54\n\n\n7\nTHQ\n340.77\n\n\n8\nKonami Digital Entertainment\n283.64\n\n\n9\nSega\n272.99\n\n\n10\nNamco Bandai Games\n254.09\n\n\n11\nMicrosoft Game Studios\n245.79\n\n\n12\nCapcom\n200.89\n\n\n13\nAtari\n157.22\n\n\n14\nWarner Bros. Interactive Entertainment\n153.89\n\n\n15\nSquare Enix\n145.18\n\n\n16\nDisney Interactive Studios\n119.96\n\n\n17\nEidos Interactive\n98.98\n\n\n18\nLucasArts\n87.34\n\n\n19\nBethesda Softworks\n82.14\n\n\n20\nMidway Games\n69.85\n\n\n\n\n\n\n\nfunction plot_df3_13(df::AbstractDataFrame)\n    #@assert names(df)[2]==\"counts\"\n    rows=nrow(df)\n    fig=Figure(resolution=(800,500))\n    ax=Axis(fig[1,1],title=\"video game sales by publisher\",yreversed=true)\n    ax.yticks=(1:rows,df[:,\"publisher\"])\n    #ax.xticklabelrotation = pi/2\n    ax.xlabel=\"sales\"\n    ax.ylabel=\"pubhisher\"\n    GLMakie.barplot!(ax,1:rows,df.sales;color = df.sales, strokecolor = :black, strokewidth = 1,direction=:x)\n    for (idx, row) in enumerate(eachrow(df))\n        sales=round(row.sales,digits=2)\n        GLMakie.text!(ax,sales+2,idx; text=\"$(sales)\",align = (:left, :center),fontsize=8)\n    end\n    GLMakie.hidedecorations!(ax,label = false, ticklabels = false, ticks = false)\n    fig\nend\nplot_df3_13(df13)\n\n\n\n\n\n\n\n\n\n\n3.14 publisher comparison\n\ndf3_14=@chain df begin\n    @group_by(publisher)\n    @summarize( na_sales = sum(na_sales), \n                eu_sales = sum(eu_sales),\n                jp_sales=sum(jp_sales),\n                other_sales=sum(other_sales),\n                global_sales=sum(global_sales)\n    )\n    @arrange desc(global_sales)\n    @slice 1:15\nend\n\n15×6 DataFrame\n\n\n\nRow\npublisher\nna_sales\neu_sales\njp_sales\nother_sales\nglobal_sales\n\n\n\nString\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\n\n\n\n\n1\nNintendo\n816.87\n418.74\n455.42\n95.33\n1786.56\n\n\n2\nElectronic Arts\n595.07\n371.27\n14.04\n129.77\n1110.32\n\n\n3\nActivision\n429.7\n215.53\n6.54\n75.34\n727.46\n\n\n4\nSony Computer Entertainment\n265.22\n187.72\n74.1\n80.45\n607.5\n\n\n5\nUbisoft\n253.43\n163.32\n7.5\n50.26\n474.72\n\n\n6\nTake-Two Interactive\n220.49\n118.14\n5.83\n55.24\n399.54\n\n\n7\nTHQ\n208.77\n94.73\n5.01\n32.14\n340.77\n\n\n8\nKonami Digital Entertainment\n92.16\n69.69\n91.3\n30.31\n283.64\n\n\n9\nSega\n109.4\n82.0\n57.03\n24.52\n272.99\n\n\n10\nNamco Bandai Games\n69.52\n42.63\n127.07\n14.69\n254.09\n\n\n11\nMicrosoft Game Studios\n155.35\n68.61\n3.26\n18.56\n245.79\n\n\n12\nCapcom\n78.59\n39.22\n68.08\n14.84\n200.89\n\n\n13\nAtari\n110.04\n27.12\n10.71\n9.01\n157.22\n\n\n14\nWarner Bros. Interactive Entertainment\n81.18\n53.12\n1.04\n18.56\n153.89\n\n\n15\nSquare Enix\n48.65\n32.82\n49.88\n13.89\n145.18\n\n\n\n\n\n\n\nres14 = @pipe df3_14 |&gt; select(_, Not(:publisher,:global_sales)) |&gt; Matrix |&gt; permutedims|&gt; reshape(_, (60, 1)) |&gt; _[:, 1]|&gt;round.(_,digits=2)\ncats = @pipe df3_14 |&gt; select(_, Not(:publisher,:global_sales)) |&gt; names\ntype_name = df3_14.publisher\ngrp = repeat(1:4, 15)\ngrp_x = repeat(1:15, inner=4)\ncolors = cgrad(:tab10)\nfunction plot_df3_14_bardodge()\n    fig=Figure(resolution=(1200,600))\n    ax=Axis(fig[1,1],title=\"video game sales  by publisher\",xticklabelrotation = pi/6)\n    ax.xticks=(1:15,type_name)\n    GLMakie.barplot!(ax,grp_x,res14; dodge =grp,color=colors[grp],strokecolor = :black, strokewidth = 1,bar_labels = :y,label_rotation=1/2*pi)\n    labels = [\"$i\" for i in cats]\n    elements = [PolyElement(polycolor = colors[i]) for (i,c) in enumerate(cats)]\n   Legend(fig[1,2], elements, labels, \"sales region\", orientation=:vertical, tellwidth = true, tellheight =false)\n    fig\nend\nplot_df3_14_bardodge()\n\n\n\n\n\n\n\n\n\n\n3.15 Top publisher by Count each year\n\ndf15=@chain df begin\n    @select(year,publisher)\n    @group_by(year,publisher)\n    @summarize(nrow =nrow())\n    @arrange(desc(nrow)) # 在每个组中按全球销售额降序排列\n    @slice(1)              # 每组销量最多的\n    @ungroup\nend\n\n40×3 DataFrame15 rows omitted\n\n\n\nRow\nyear\npublisher\nnrow\n\n\n\nString7\nString\nInt64\n\n\n\n\n1\n2009\nActivision\n121\n\n\n2\n2008\nElectronic Arts\n120\n\n\n3\n2005\nElectronic Arts\n117\n\n\n4\n2007\nElectronic Arts\n107\n\n\n5\nN/A\nUnknown\n103\n\n\n6\n2006\nElectronic Arts\n102\n\n\n7\n2010\nActivision\n89\n\n\n8\n2002\nElectronic Arts\n88\n\n\n9\n2011\nUbisoft\n87\n\n\n10\n2004\nElectronic Arts\n86\n\n\n11\n2012\nNamco Bandai Games\n85\n\n\n12\n2003\nElectronic Arts\n85\n\n\n13\n2014\nNamco Bandai Games\n69\n\n\n⋮\n⋮\n⋮\n⋮\n\n\n29\n1989\nNintendo\n9\n\n\n30\n1984\nNintendo\n9\n\n\n31\n1993\nNintendo\n9\n\n\n32\n1985\nNintendo\n7\n\n\n33\n1990\nNintendo\n7\n\n\n34\n1988\nNintendo\n6\n\n\n35\n1986\nNintendo\n6\n\n\n36\n1983\nNintendo\n6\n\n\n37\n1980\nActivision\n5\n\n\n38\n1987\nNintendo\n4\n\n\n39\n2017\nSega\n2\n\n\n40\n2020\nUbisoft\n1\n\n\n\n\n\n\n\nfunction plot_df3_15(df::AbstractDataFrame)\n    #@assert names(df)[2]==\"counts\"\n    rows=nrow(df)\n    fig=Figure(resolution=(800,800))\n    ax=Axis(fig[1,1],title=\"publiher champion by year\")\n    ax.yticks=(1:rows,df[:,\"year\"])\n    #ax.xticklabelrotation = pi/2\n    ax.xlabel=\"counts\"\n    ax.ylabel=\"name\"\n    GLMakie.barplot!(ax,1:rows,df.nrow;color = df.nrow, strokecolor = :black, strokewidth = 1,direction=:x)\n    for (idx, row) in enumerate(eachrow(df))\n        publisher,nrow,year=row.publisher,row.nrow,row.year\n        GLMakie.text!(ax,nrow+2,idx; text=\"$publisher-$nrow\",align = (:left, :center),fontsize=8)\n    end\n    GLMakie.hidedecorations!(ax,label = false, ticklabels = false, ticks = false)\n    fig\nend\nplot_df3_15(df15)\n\n\n\n\n\n\n\n\n\n\n3.16 Total revenue by region\n\ndf3_16=@chain df begin\n    @select(na_sales,eu_sales,jp_sales,other_sales,global_sales)\n    \n    @summarize( na_sales = sum(na_sales), \n                eu_sales = sum(eu_sales),\n                jp_sales=sum(jp_sales),\n                other_sales=sum(other_sales),\n                global_sales=sum(global_sales)\n    )\nend\n#df3_16.region=[\"na_sales\", \"eu_sales\", \"jp_sales\", \"other_sales\",\"global_sales\"]\n\n1×5 DataFrame\n\n\n\nRow\nna_sales\neu_sales\njp_sales\nother_sales\nglobal_sales\n\n\n\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\n\n\n\n\n1\n4392.95\n2434.13\n1291.02\n797.75\n8920.44\n\n\n\n\n\n\n\n\n3.17 Sales Histogram\n\n# 在@chain 中做转换是可以的, 但是要处理-Inf 的问题 log(0)==-Inf,所以放到绘图时处理\ndf17=@chain df begin\n    @select(na_sales,eu_sales,jp_sales,other_sales,global_sales)\nend\n\n16598×5 DataFrame16573 rows omitted\n\n\n\nRow\nna_sales\neu_sales\njp_sales\nother_sales\nglobal_sales\n\n\n\nFloat64\nFloat64\nFloat64\nFloat64\nFloat64\n\n\n\n\n1\n41.49\n29.02\n3.77\n8.46\n82.74\n\n\n2\n29.08\n3.58\n6.81\n0.77\n40.24\n\n\n3\n15.85\n12.88\n3.79\n3.31\n35.82\n\n\n4\n15.75\n11.01\n3.28\n2.96\n33.0\n\n\n5\n11.27\n8.89\n10.22\n1.0\n31.37\n\n\n6\n23.2\n2.26\n4.22\n0.58\n30.26\n\n\n7\n11.38\n9.23\n6.5\n2.9\n30.01\n\n\n8\n14.03\n9.2\n2.93\n2.85\n29.02\n\n\n9\n14.59\n7.06\n4.7\n2.26\n28.62\n\n\n10\n26.93\n0.63\n0.28\n0.47\n28.31\n\n\n11\n9.07\n11.0\n1.93\n2.75\n24.76\n\n\n12\n9.81\n7.57\n4.13\n1.92\n23.42\n\n\n13\n9.0\n6.18\n7.2\n0.71\n23.1\n\n\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n\n\n16587\n0.0\n0.01\n0.0\n0.0\n0.01\n\n\n16588\n0.0\n0.0\n0.01\n0.0\n0.01\n\n\n16589\n0.01\n0.0\n0.0\n0.0\n0.01\n\n\n16590\n0.0\n0.0\n0.01\n0.0\n0.01\n\n\n16591\n0.0\n0.0\n0.01\n0.0\n0.01\n\n\n16592\n0.01\n0.0\n0.0\n0.0\n0.01\n\n\n16593\n0.01\n0.0\n0.0\n0.0\n0.01\n\n\n16594\n0.01\n0.0\n0.0\n0.0\n0.01\n\n\n16595\n0.01\n0.0\n0.0\n0.0\n0.01\n\n\n16596\n0.0\n0.0\n0.0\n0.0\n0.01\n\n\n16597\n0.0\n0.01\n0.0\n0.0\n0.01\n\n\n16598\n0.01\n0.0\n0.0\n0.0\n0.01",
+    "crumbs": [
+      "Example",
+      "VideoGame Data Visualization"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#peek-dataset",
+    "href": "chapters/bad-password.html#peek-dataset",
+    "title": "Bad Password",
+    "section": "1. peek dataset",
+    "text": "1. peek dataset\n\n@chain bp begin\n    @slice(1:5)\nend\n\n5×3 DataFrame\n\n\n\nRow\nid\nuser_name\npassword\n\n\n\nInt64\nString31\nString31\n\n\n\n\n1\n1\nvance.jennings\njoobheco\n\n\n2\n2\nconsuelo.eaton\n0869347314\n\n\n3\n3\nmitchel.perkins\nfabypotter\n\n\n4\n4\nodessa.vaughan\naharney88\n\n\n5\n5\naraceli.wilder\nacecdn3000",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#add-password-length-column",
+    "href": "chapters/bad-password.html#add-password-length-column",
+    "title": "Bad Password",
+    "section": "2. add password length column",
+    "text": "2. add password length column\n\ndf2=@chain bp begin\n  @mutate(password_len =length.(password))\n  \nend\n\n982×4 DataFrame957 rows omitted\n\n\n\nRow\nid\nuser_name\npassword\npassword_len\n\n\n\nInt64\nString31\nString31\nInt64\n\n\n\n\n1\n1\nvance.jennings\njoobheco\n8\n\n\n2\n2\nconsuelo.eaton\n0869347314\n10\n\n\n3\n3\nmitchel.perkins\nfabypotter\n10\n\n\n4\n4\nodessa.vaughan\naharney88\n9\n\n\n5\n5\naraceli.wilder\nacecdn3000\n10\n\n\n6\n6\nshawn.harrington\n5278049\n7\n\n\n7\n7\nevelyn.gay\nmaster\n6\n\n\n8\n8\nnoreen.hale\nmurphy\n6\n\n\n9\n9\ngladys.ward\nlwsves2\n7\n\n\n10\n10\nbrant.zimmerman\n1190KAREN5572497\n16\n\n\n11\n11\nleanna.abbott\naivlys24\n8\n\n\n12\n12\nmilford.hubbard\nhubbard\n7\n\n\n13\n13\nmamie.fox\nmitonguito\n10\n\n\n⋮\n⋮\n⋮\n⋮\n⋮\n\n\n971\n971\nnoel.montoya\ncolours\n7\n\n\n972\n972\njosef.hoffman\npharmacy2012\n12\n\n\n973\n973\njorge.patrick\n09196921342\n11\n\n\n974\n974\nrogelio.payne\nilamujoy\n8\n\n\n975\n975\nlucille.stark\nbuddaball\n9\n\n\n976\n976\nfreeman.rose\nrangers\n7\n\n\n977\n977\nmonica.flores\nbroktaydrew16\n13\n\n\n978\n978\nautumn.alford\nakgkhk82\n8\n\n\n979\n979\nmiriam.haynes\njhavonne93\n10\n\n\n980\n980\ngenaro.russo\nv2PfqcQDleA\n11\n\n\n981\n981\nlora.quinn\nantonau\n7\n\n\n982\n982\nelmer.mccormick\ngoldfish92\n10",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#tag-too-short-password-users",
+    "href": "chapters/bad-password.html#tag-too-short-password-users",
+    "title": "Bad Password",
+    "section": "3. tag too short password users",
+    "text": "3. tag too short password users\n\ndf3=@chain df2 begin\n  @mutate(too_short = if_else(password_len &lt;8, 1,0))\n  \nend\n\n982×5 DataFrame957 rows omitted\n\n\n\nRow\nid\nuser_name\npassword\npassword_len\ntoo_short\n\n\n\nInt64\nString31\nString31\nInt64\nInt64\n\n\n\n\n1\n1\nvance.jennings\njoobheco\n8\n0\n\n\n2\n2\nconsuelo.eaton\n0869347314\n10\n0\n\n\n3\n3\nmitchel.perkins\nfabypotter\n10\n0\n\n\n4\n4\nodessa.vaughan\naharney88\n9\n0\n\n\n5\n5\naraceli.wilder\nacecdn3000\n10\n0\n\n\n6\n6\nshawn.harrington\n5278049\n7\n1\n\n\n7\n7\nevelyn.gay\nmaster\n6\n1\n\n\n8\n8\nnoreen.hale\nmurphy\n6\n1\n\n\n9\n9\ngladys.ward\nlwsves2\n7\n1\n\n\n10\n10\nbrant.zimmerman\n1190KAREN5572497\n16\n0\n\n\n11\n11\nleanna.abbott\naivlys24\n8\n0\n\n\n12\n12\nmilford.hubbard\nhubbard\n7\n1\n\n\n13\n13\nmamie.fox\nmitonguito\n10\n0\n\n\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n\n\n971\n971\nnoel.montoya\ncolours\n7\n1\n\n\n972\n972\njosef.hoffman\npharmacy2012\n12\n0\n\n\n973\n973\njorge.patrick\n09196921342\n11\n0\n\n\n974\n974\nrogelio.payne\nilamujoy\n8\n0\n\n\n975\n975\nlucille.stark\nbuddaball\n9\n0\n\n\n976\n976\nfreeman.rose\nrangers\n7\n1\n\n\n977\n977\nmonica.flores\nbroktaydrew16\n13\n0\n\n\n978\n978\nautumn.alford\nakgkhk82\n8\n0\n\n\n979\n979\nmiriam.haynes\njhavonne93\n10\n0\n\n\n980\n980\ngenaro.russo\nv2PfqcQDleA\n11\n0\n\n\n981\n981\nlora.quinn\nantonau\n7\n1\n\n\n982\n982\nelmer.mccormick\ngoldfish92\n10\n0",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#sum-short-password-user-counts",
+    "href": "chapters/bad-password.html#sum-short-password-user-counts",
+    "title": "Bad Password",
+    "section": "4. sum short password user counts",
+    "text": "4. sum short password user counts\n\n@chain df3 begin\n  @filter(too_short==1)\n  @summarize(n = nrow())\n  \nend\n\n1×1 DataFrame\n\n\n\nRow\nn\n\n\n\nInt64\n\n\n\n\n1\n376\n\n\n\n\n\n\n\n@chain common_password begin\n  @slice(1:20)\nend\n\n20×1 DataFrame\n\n\n\nRow\n123456\n\n\n\nString31\n\n\n\n\n1\npassword\n\n\n2\n12345678\n\n\n3\nqwerty\n\n\n4\n123456789\n\n\n5\n12345\n\n\n6\n1234\n\n\n7\n111111\n\n\n8\n1234567\n\n\n9\ndragon\n\n\n10\n123123\n\n\n11\nbaseball\n\n\n12\nabc123\n\n\n13\nfootball\n\n\n14\nmonkey\n\n\n15\nletmein\n\n\n16\n696969\n\n\n17\nshadow\n\n\n18\nmaster\n\n\n19\n666666\n\n\n20\nqwertyuiop",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#check-whether-user_password-in-common_password",
+    "href": "chapters/bad-password.html#check-whether-user_password-in-common_password",
+    "title": "Bad Password",
+    "section": "5. check whether user_password in common_password",
+    "text": "5. check whether user_password in common_password\n在if_else 中使用外部传入数组变量时需要使用: @eval(Main, common_pw_arr=common_password[:,1]) 定义变量 在作用域中使用时,需要使用!!vars 的方法\n\n@eval(Main, common_pw_arr=common_password[:,1])\ndf4=@chain df3 begin\n  @mutate(common_password = if_else(password in !!common_pw_arr , 1, 0) )\nend\n\n982×6 DataFrame957 rows omitted\n\n\n\nRow\nid\nuser_name\npassword\npassword_len\ntoo_short\ncommon_password\n\n\n\nInt64\nString31\nString31\nInt64\nInt64\nInt64\n\n\n\n\n1\n1\nvance.jennings\njoobheco\n8\n0\n0\n\n\n2\n2\nconsuelo.eaton\n0869347314\n10\n0\n0\n\n\n3\n3\nmitchel.perkins\nfabypotter\n10\n0\n0\n\n\n4\n4\nodessa.vaughan\naharney88\n9\n0\n0\n\n\n5\n5\naraceli.wilder\nacecdn3000\n10\n0\n0\n\n\n6\n6\nshawn.harrington\n5278049\n7\n1\n0\n\n\n7\n7\nevelyn.gay\nmaster\n6\n1\n1\n\n\n8\n8\nnoreen.hale\nmurphy\n6\n1\n1\n\n\n9\n9\ngladys.ward\nlwsves2\n7\n1\n0\n\n\n10\n10\nbrant.zimmerman\n1190KAREN5572497\n16\n0\n0\n\n\n11\n11\nleanna.abbott\naivlys24\n8\n0\n0\n\n\n12\n12\nmilford.hubbard\nhubbard\n7\n1\n0\n\n\n13\n13\nmamie.fox\nmitonguito\n10\n0\n0\n\n\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n\n\n971\n971\nnoel.montoya\ncolours\n7\n1\n0\n\n\n972\n972\njosef.hoffman\npharmacy2012\n12\n0\n0\n\n\n973\n973\njorge.patrick\n09196921342\n11\n0\n0\n\n\n974\n974\nrogelio.payne\nilamujoy\n8\n0\n0\n\n\n975\n975\nlucille.stark\nbuddaball\n9\n0\n0\n\n\n976\n976\nfreeman.rose\nrangers\n7\n1\n1\n\n\n977\n977\nmonica.flores\nbroktaydrew16\n13\n0\n0\n\n\n978\n978\nautumn.alford\nakgkhk82\n8\n0\n0\n\n\n979\n979\nmiriam.haynes\njhavonne93\n10\n0\n0\n\n\n980\n980\ngenaro.russo\nv2PfqcQDleA\n11\n0\n0\n\n\n981\n981\nlora.quinn\nantonau\n7\n1\n0\n\n\n982\n982\nelmer.mccormick\ngoldfish92\n10\n0\n0",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#stat-common-pw",
+    "href": "chapters/bad-password.html#stat-common-pw",
+    "title": "Bad Password",
+    "section": "6. stat common pw",
+    "text": "6. stat common pw\n\n@chain df4 begin\n  @filter(common_password==1)\n  @summarize(n = nrow())\nend\n\n1×1 DataFrame\n\n\n\nRow\nn\n\n\n\nInt64\n\n\n\n\n1\n128",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#user-pw-是否出现在-1_00_000的常用单词列表中",
+    "href": "chapters/bad-password.html#user-pw-是否出现在-1_00_000的常用单词列表中",
+    "title": "Bad Password",
+    "section": "7. user pw 是否出现在 1_00_000的常用单词列表中",
+    "text": "7. user pw 是否出现在 1_00_000的常用单词列表中\n\n@chain common_words begin\n   @slice(1:5)\nend\n\n5×1 DataFrame\n\n\n\nRow\nthe\n\n\n\nString31\n\n\n\n\n1\nof\n\n\n2\nand\n\n\n3\nto\n\n\n4\na\n\n\n5\nin",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#check-whether-user_password-in-common_words",
+    "href": "chapters/bad-password.html#check-whether-user_password-in-common_words",
+    "title": "Bad Password",
+    "section": "8. check whether user_password in common_words",
+    "text": "8. check whether user_password in common_words\n\n@eval(Main, common_words_arr=common_words=common_words[:,1])\ndf5=@chain df4 begin\n  @mutate(common_words = if_else(password in !!common_words_arr , 1, 0) )\nend\n\n982×7 DataFrame957 rows omitted\n\n\n\nRow\nid\nuser_name\npassword\npassword_len\ntoo_short\ncommon_password\ncommon_words\n\n\n\nInt64\nString31\nString31\nInt64\nInt64\nInt64\nInt64\n\n\n\n\n1\n1\nvance.jennings\njoobheco\n8\n0\n0\n0\n\n\n2\n2\nconsuelo.eaton\n0869347314\n10\n0\n0\n0\n\n\n3\n3\nmitchel.perkins\nfabypotter\n10\n0\n0\n0\n\n\n4\n4\nodessa.vaughan\naharney88\n9\n0\n0\n0\n\n\n5\n5\naraceli.wilder\nacecdn3000\n10\n0\n0\n0\n\n\n6\n6\nshawn.harrington\n5278049\n7\n1\n0\n0\n\n\n7\n7\nevelyn.gay\nmaster\n6\n1\n1\n1\n\n\n8\n8\nnoreen.hale\nmurphy\n6\n1\n1\n1\n\n\n9\n9\ngladys.ward\nlwsves2\n7\n1\n0\n0\n\n\n10\n10\nbrant.zimmerman\n1190KAREN5572497\n16\n0\n0\n0\n\n\n11\n11\nleanna.abbott\naivlys24\n8\n0\n0\n0\n\n\n12\n12\nmilford.hubbard\nhubbard\n7\n1\n0\n0\n\n\n13\n13\nmamie.fox\nmitonguito\n10\n0\n0\n0\n\n\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n\n\n971\n971\nnoel.montoya\ncolours\n7\n1\n0\n1\n\n\n972\n972\njosef.hoffman\npharmacy2012\n12\n0\n0\n0\n\n\n973\n973\njorge.patrick\n09196921342\n11\n0\n0\n0\n\n\n974\n974\nrogelio.payne\nilamujoy\n8\n0\n0\n0\n\n\n975\n975\nlucille.stark\nbuddaball\n9\n0\n0\n0\n\n\n976\n976\nfreeman.rose\nrangers\n7\n1\n1\n1\n\n\n977\n977\nmonica.flores\nbroktaydrew16\n13\n0\n0\n0\n\n\n978\n978\nautumn.alford\nakgkhk82\n8\n0\n0\n0\n\n\n979\n979\nmiriam.haynes\njhavonne93\n10\n0\n0\n0\n\n\n980\n980\ngenaro.russo\nv2PfqcQDleA\n11\n0\n0\n0\n\n\n981\n981\nlora.quinn\nantonau\n7\n1\n0\n0\n\n\n982\n982\nelmer.mccormick\ngoldfish92\n10\n0\n0\n0",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#stat-common-words",
+    "href": "chapters/bad-password.html#stat-common-words",
+    "title": "Bad Password",
+    "section": "9. stat common words",
+    "text": "9. stat common words\n\n@chain df5 begin\n  @filter(common_words==1)\n  @summarize(n = nrow())\nend\n\n1×1 DataFrame\n\n\n\nRow\nn\n\n\n\nInt64\n\n\n\n\n1\n136\n\n\n\n\n\n\n\ndf6=@chain df5 begin\n @mutate(first_name=split(user_name, \".\")|&gt;d-&gt;d[1],last_name=split(user_name, \".\")|&gt;d-&gt;d[2])\nend\n\n982×9 DataFrame957 rows omitted\n\n\n\nRow\nid\nuser_name\npassword\npassword_len\ntoo_short\ncommon_password\ncommon_words\nfirst_name\nlast_name\n\n\n\nInt64\nString31\nString31\nInt64\nInt64\nInt64\nInt64\nSubStrin…\nSubStrin…\n\n\n\n\n1\n1\nvance.jennings\njoobheco\n8\n0\n0\n0\nvance\njennings\n\n\n2\n2\nconsuelo.eaton\n0869347314\n10\n0\n0\n0\nconsuelo\neaton\n\n\n3\n3\nmitchel.perkins\nfabypotter\n10\n0\n0\n0\nmitchel\nperkins\n\n\n4\n4\nodessa.vaughan\naharney88\n9\n0\n0\n0\nodessa\nvaughan\n\n\n5\n5\naraceli.wilder\nacecdn3000\n10\n0\n0\n0\naraceli\nwilder\n\n\n6\n6\nshawn.harrington\n5278049\n7\n1\n0\n0\nshawn\nharrington\n\n\n7\n7\nevelyn.gay\nmaster\n6\n1\n1\n1\nevelyn\ngay\n\n\n8\n8\nnoreen.hale\nmurphy\n6\n1\n1\n1\nnoreen\nhale\n\n\n9\n9\ngladys.ward\nlwsves2\n7\n1\n0\n0\ngladys\nward\n\n\n10\n10\nbrant.zimmerman\n1190KAREN5572497\n16\n0\n0\n0\nbrant\nzimmerman\n\n\n11\n11\nleanna.abbott\naivlys24\n8\n0\n0\n0\nleanna\nabbott\n\n\n12\n12\nmilford.hubbard\nhubbard\n7\n1\n0\n0\nmilford\nhubbard\n\n\n13\n13\nmamie.fox\nmitonguito\n10\n0\n0\n0\nmamie\nfox\n\n\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n\n\n971\n971\nnoel.montoya\ncolours\n7\n1\n0\n1\nnoel\nmontoya\n\n\n972\n972\njosef.hoffman\npharmacy2012\n12\n0\n0\n0\njosef\nhoffman\n\n\n973\n973\njorge.patrick\n09196921342\n11\n0\n0\n0\njorge\npatrick\n\n\n974\n974\nrogelio.payne\nilamujoy\n8\n0\n0\n0\nrogelio\npayne\n\n\n975\n975\nlucille.stark\nbuddaball\n9\n0\n0\n0\nlucille\nstark\n\n\n976\n976\nfreeman.rose\nrangers\n7\n1\n1\n1\nfreeman\nrose\n\n\n977\n977\nmonica.flores\nbroktaydrew16\n13\n0\n0\n0\nmonica\nflores\n\n\n978\n978\nautumn.alford\nakgkhk82\n8\n0\n0\n0\nautumn\nalford\n\n\n979\n979\nmiriam.haynes\njhavonne93\n10\n0\n0\n0\nmiriam\nhaynes\n\n\n980\n980\ngenaro.russo\nv2PfqcQDleA\n11\n0\n0\n0\ngenaro\nrusso\n\n\n981\n981\nlora.quinn\nantonau\n7\n1\n0\n0\nlora\nquinn\n\n\n982\n982\nelmer.mccormick\ngoldfish92\n10\n0\n0\n0\nelmer\nmccormick",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#check-user-namefirst-namelast-name-whether-is-password",
+    "href": "chapters/bad-password.html#check-user-namefirst-namelast-name-whether-is-password",
+    "title": "Bad Password",
+    "section": "10. check user name(first name,last name) whether is password",
+    "text": "10. check user name(first name,last name) whether is password\n\n@eval(Main, common_words_arr=common_words=common_words[:,1])\ndf7=@chain df6 begin\n  @mutate(name_is_pwd = if_else(password==first_name||password==last_name , 1, 0) )\nend\n\n982×10 DataFrame957 rows omitted\n\n\n\nRow\nid\nuser_name\npassword\npassword_len\ntoo_short\ncommon_password\ncommon_words\nfirst_name\nlast_name\nname_is_pwd\n\n\n\nInt64\nString31\nString31\nInt64\nInt64\nInt64\nInt64\nSubStrin…\nSubStrin…\nInt64\n\n\n\n\n1\n1\nvance.jennings\njoobheco\n8\n0\n0\n0\nvance\njennings\n0\n\n\n2\n2\nconsuelo.eaton\n0869347314\n10\n0\n0\n0\nconsuelo\neaton\n0\n\n\n3\n3\nmitchel.perkins\nfabypotter\n10\n0\n0\n0\nmitchel\nperkins\n0\n\n\n4\n4\nodessa.vaughan\naharney88\n9\n0\n0\n0\nodessa\nvaughan\n0\n\n\n5\n5\naraceli.wilder\nacecdn3000\n10\n0\n0\n0\naraceli\nwilder\n0\n\n\n6\n6\nshawn.harrington\n5278049\n7\n1\n0\n0\nshawn\nharrington\n0\n\n\n7\n7\nevelyn.gay\nmaster\n6\n1\n1\n1\nevelyn\ngay\n0\n\n\n8\n8\nnoreen.hale\nmurphy\n6\n1\n1\n1\nnoreen\nhale\n0\n\n\n9\n9\ngladys.ward\nlwsves2\n7\n1\n0\n0\ngladys\nward\n0\n\n\n10\n10\nbrant.zimmerman\n1190KAREN5572497\n16\n0\n0\n0\nbrant\nzimmerman\n0\n\n\n11\n11\nleanna.abbott\naivlys24\n8\n0\n0\n0\nleanna\nabbott\n0\n\n\n12\n12\nmilford.hubbard\nhubbard\n7\n1\n0\n0\nmilford\nhubbard\n1\n\n\n13\n13\nmamie.fox\nmitonguito\n10\n0\n0\n0\nmamie\nfox\n0\n\n\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n\n\n971\n971\nnoel.montoya\ncolours\n7\n1\n0\n1\nnoel\nmontoya\n0\n\n\n972\n972\njosef.hoffman\npharmacy2012\n12\n0\n0\n0\njosef\nhoffman\n0\n\n\n973\n973\njorge.patrick\n09196921342\n11\n0\n0\n0\njorge\npatrick\n0\n\n\n974\n974\nrogelio.payne\nilamujoy\n8\n0\n0\n0\nrogelio\npayne\n0\n\n\n975\n975\nlucille.stark\nbuddaball\n9\n0\n0\n0\nlucille\nstark\n0\n\n\n976\n976\nfreeman.rose\nrangers\n7\n1\n1\n1\nfreeman\nrose\n0\n\n\n977\n977\nmonica.flores\nbroktaydrew16\n13\n0\n0\n0\nmonica\nflores\n0\n\n\n978\n978\nautumn.alford\nakgkhk82\n8\n0\n0\n0\nautumn\nalford\n0\n\n\n979\n979\nmiriam.haynes\njhavonne93\n10\n0\n0\n0\nmiriam\nhaynes\n0\n\n\n980\n980\ngenaro.russo\nv2PfqcQDleA\n11\n0\n0\n0\ngenaro\nrusso\n0\n\n\n981\n981\nlora.quinn\nantonau\n7\n1\n0\n0\nlora\nquinn\n0\n\n\n982\n982\nelmer.mccormick\ngoldfish92\n10\n0\n0\n0\nelmer\nmccormick\n0",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#count-user-namefirst-namelast-namepassword",
+    "href": "chapters/bad-password.html#count-user-namefirst-namelast-namepassword",
+    "title": "Bad Password",
+    "section": "11. count user name(first name,last name)==password",
+    "text": "11. count user name(first name,last name)==password\n\n@chain df7 begin\n  @filter(name_is_pwd==1)\n  @summarize(n = nrow())\nend\n\n1×1 DataFrame\n\n\n\nRow\nn\n\n\n\nInt64\n\n\n\n\n1\n50",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#password-has-repeat-char",
+    "href": "chapters/bad-password.html#password-has-repeat-char",
+    "title": "Bad Password",
+    "section": "12. password has repeat char",
+    "text": "12. password has repeat char\n\n  # df8=@chain df7 begin\n  #   @mutate(pwd_has_3_)\n  # end",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#alltoghter",
+    "href": "chapters/bad-password.html#alltoghter",
+    "title": "Bad Password",
+    "section": "13. alltoghter",
+    "text": "13. alltoghter\n\ndf7[1,:]\n\nDataFrameRow (10 columns)\n\n\n\nRow\nid\nuser_name\npassword\npassword_len\ntoo_short\ncommon_password\ncommon_words\nfirst_name\nlast_name\nname_is_pwd\n\n\n\nInt64\nString31\nString31\nInt64\nInt64\nInt64\nInt64\nSubStrin…\nSubStrin…\nInt64\n\n\n\n\n1\n1\nvance.jennings\njoobheco\n8\n0\n0\n0\nvance\njennings\n0",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
+    ]
+  },
+  {
+    "objectID": "chapters/bad-password.html#combine-all-check-conditions",
+    "href": "chapters/bad-password.html#combine-all-check-conditions",
+    "title": "Bad Password",
+    "section": "14. combine all check conditions",
+    "text": "14. combine all check conditions\n\ndf8=@chain df7 begin\n @mutate(bad_password = if_else(too_short==1||common_password==1||\n                                common_password==1||name_is_pwd==1\n , 1,0))\nend\n\n982×11 DataFrame957 rows omitted\n\n\n\nRow\nid\nuser_name\npassword\npassword_len\ntoo_short\ncommon_password\ncommon_words\nfirst_name\nlast_name\nname_is_pwd\nbad_password\n\n\n\nInt64\nString31\nString31\nInt64\nInt64\nInt64\nInt64\nSubStrin…\nSubStrin…\nInt64\nInt64\n\n\n\n\n1\n1\nvance.jennings\njoobheco\n8\n0\n0\n0\nvance\njennings\n0\n0\n\n\n2\n2\nconsuelo.eaton\n0869347314\n10\n0\n0\n0\nconsuelo\neaton\n0\n0\n\n\n3\n3\nmitchel.perkins\nfabypotter\n10\n0\n0\n0\nmitchel\nperkins\n0\n0\n\n\n4\n4\nodessa.vaughan\naharney88\n9\n0\n0\n0\nodessa\nvaughan\n0\n0\n\n\n5\n5\naraceli.wilder\nacecdn3000\n10\n0\n0\n0\naraceli\nwilder\n0\n0\n\n\n6\n6\nshawn.harrington\n5278049\n7\n1\n0\n0\nshawn\nharrington\n0\n1\n\n\n7\n7\nevelyn.gay\nmaster\n6\n1\n1\n1\nevelyn\ngay\n0\n1\n\n\n8\n8\nnoreen.hale\nmurphy\n6\n1\n1\n1\nnoreen\nhale\n0\n1\n\n\n9\n9\ngladys.ward\nlwsves2\n7\n1\n0\n0\ngladys\nward\n0\n1\n\n\n10\n10\nbrant.zimmerman\n1190KAREN5572497\n16\n0\n0\n0\nbrant\nzimmerman\n0\n0\n\n\n11\n11\nleanna.abbott\naivlys24\n8\n0\n0\n0\nleanna\nabbott\n0\n0\n\n\n12\n12\nmilford.hubbard\nhubbard\n7\n1\n0\n0\nmilford\nhubbard\n1\n1\n\n\n13\n13\nmamie.fox\nmitonguito\n10\n0\n0\n0\nmamie\nfox\n0\n0\n\n\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n\n\n971\n971\nnoel.montoya\ncolours\n7\n1\n0\n1\nnoel\nmontoya\n0\n1\n\n\n972\n972\njosef.hoffman\npharmacy2012\n12\n0\n0\n0\njosef\nhoffman\n0\n0\n\n\n973\n973\njorge.patrick\n09196921342\n11\n0\n0\n0\njorge\npatrick\n0\n0\n\n\n974\n974\nrogelio.payne\nilamujoy\n8\n0\n0\n0\nrogelio\npayne\n0\n0\n\n\n975\n975\nlucille.stark\nbuddaball\n9\n0\n0\n0\nlucille\nstark\n0\n0\n\n\n976\n976\nfreeman.rose\nrangers\n7\n1\n1\n1\nfreeman\nrose\n0\n1\n\n\n977\n977\nmonica.flores\nbroktaydrew16\n13\n0\n0\n0\nmonica\nflores\n0\n0\n\n\n978\n978\nautumn.alford\nakgkhk82\n8\n0\n0\n0\nautumn\nalford\n0\n0\n\n\n979\n979\nmiriam.haynes\njhavonne93\n10\n0\n0\n0\nmiriam\nhaynes\n0\n0\n\n\n980\n980\ngenaro.russo\nv2PfqcQDleA\n11\n0\n0\n0\ngenaro\nrusso\n0\n0\n\n\n981\n981\nlora.quinn\nantonau\n7\n1\n0\n0\nlora\nquinn\n0\n1\n\n\n982\n982\nelmer.mccormick\ngoldfish92\n10\n0\n0\n0\nelmer\nmccormick\n0\n0\n\n\n\n\n\n\n\n@chain df8 begin\n@filter(bad_password==1)\n@summarize(n = nrow())\nend\n\n1×1 DataFrame\n\n\n\nRow\nn\n\n\n\nInt64\n\n\n\n\n1\n397",
+    "crumbs": [
+      "Example",
+      "`Bad Password`"
     ]
   },
   {

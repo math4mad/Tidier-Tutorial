@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidier.jl Learning - @select</title>
+<title>Tidier.jl Learning - @summarize</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/@rename.html" rel="next">
-<link href="../chapters/movie dataset.html" rel="prev">
+<link href="../chapters/@filter.html" rel="next">
+<link href="../chapters/@mutate.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/movie dataset.html">Tutorial</a></li><li class="breadcrumb-item"><a href="../chapters/@select.html"><code>@select</code></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/movie dataset.html">Tutorial</a></li><li class="breadcrumb-item"><a href="../chapters/@summarize.html"><code>@summarize</code></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/@select.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/@select.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>@select</code></span></a>
   </div>
 </li>
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/@summarize.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/@summarize.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><code>@summarize</code></span></a>
   </div>
 </li>
@@ -252,18 +252,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#从-dataframe-中选取-5-列数据" id="toc-从-dataframe-中选取-5-列数据" class="nav-link active" data-scroll-target="#从-dataframe-中选取-5-列数据">从 DataFrame 中选取 5 列数据</a></li>
-  <li><a href="#使用数字索引选取5列" id="toc-使用数字索引选取5列" class="nav-link" data-scroll-target="#使用数字索引选取5列">使用数字索引选取5列</a></li>
-  <li><a href="#使用区间range-选取-5-列" id="toc-使用区间range-选取-5-列" class="nav-link" data-scroll-target="#使用区间range-选取-5-列">使用区间(range) 选取 5 列</a></li>
+  <li><a href="#using-summarize-聚合显示总电影数" id="toc-using-summarize-聚合显示总电影数" class="nav-link active" data-scroll-target="#using-summarize-聚合显示总电影数">1. using <code>summarize()</code> 聚合显示总电影数</a></li>
+  <li><a href="#使用-summarize-显示电影均值和中位数" id="toc-使用-summarize-显示电影均值和中位数" class="nav-link" data-scroll-target="#使用-summarize-显示电影均值和中位数">2. 使用 <code>@summarize()</code> 显示电影均值和中位数</a></li>
+  <li><a href="#联合使用-group_by和summarize" id="toc-联合使用-group_by和summarize" class="nav-link" data-scroll-target="#联合使用-group_by和summarize">3. 联合使用 <code>@group_by</code>和<code>@summarize()</code></a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/movie dataset.html">Tutorial</a></li><li class="breadcrumb-item"><a href="../chapters/@select.html"><code>@select</code></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/movie dataset.html">Tutorial</a></li><li class="breadcrumb-item"><a href="../chapters/@summarize.html"><code>@summarize</code></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><code>@select</code></h1>
+<h1 class="title"><code>@summarize</code></h1>
 </div>
 
 
@@ -280,77 +280,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="d9adbc75" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"utils.jl"</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6c34a1d1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"./utils.jl"</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="从-dataframe-中选取-5-列数据" class="level2">
-<h2 class="anchored" data-anchor-id="从-dataframe-中选取-5-列数据">从 DataFrame 中选取 5 列数据</h2>
-<div id="d31943f8" class="cell" data-execution_count="2">
+<section id="using-summarize-聚合显示总电影数" class="level2">
+<h2 class="anchored" data-anchor-id="using-summarize-聚合显示总电影数">1. using <code>summarize()</code> 聚合显示总电影数</h2>
+<div id="52e034ca" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@chain</span> movies <span class="cf">begin</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@select</span>(title, year, length, budget, rating)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@slice</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@summarize</span>(n <span class="op">=</span> <span class="fu">nrow</span>())</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<div><div style="float: left;"><span>5×5 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
+<div><div style="float: left;"><span>1×1 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
 <table class="data-frame table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Row</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">title</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">year</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">length</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">budget</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">rating</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">n</th>
 </tr>
 <tr class="odd subheader headerLastRow">
 <th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int32">Int32</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int32">Int32</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Int32}">Int32?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int64">Int64</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td class="rowNumber" style="text-align: right; font-weight: bold;">1</td>
-<td style="text-align: left;">$</td>
-<td style="text-align: right;">1971</td>
-<td style="text-align: right;">121</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">6.4</td>
-</tr>
-<tr class="even">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">2</td>
-<td style="text-align: left;">$1000 a Touchdown</td>
-<td style="text-align: right;">1939</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">6.0</td>
-</tr>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">3</td>
-<td style="text-align: left;">$21 a Day Once a Month</td>
-<td style="text-align: right;">1941</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">8.2</td>
-</tr>
-<tr class="even">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">4</td>
-<td style="text-align: left;">$40,000</td>
-<td style="text-align: right;">1996</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">8.2</td>
-</tr>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">5</td>
-<td style="text-align: left;">$50,000 Climax Show, The</td>
-<td style="text-align: right;">1975</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">58788</td>
 </tr>
 </tbody>
 </table>
@@ -358,74 +313,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="使用数字索引选取5列" class="level2">
-<h2 class="anchored" data-anchor-id="使用数字索引选取5列">使用数字索引选取5列</h2>
-<div id="e1568004" class="cell" data-execution_count="3">
+<section id="使用-summarize-显示电影均值和中位数" class="level2">
+<h2 class="anchored" data-anchor-id="使用-summarize-显示电影均值和中位数">2. 使用 <code>@summarize()</code> 显示电影均值和中位数</h2>
+<div id="5e15cd1f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@chain</span> movies <span class="cf">begin</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@select</span>(<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@slice</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@mutate</span>(budget <span class="op">=</span> budget <span class="op">/</span> <span class="fl">1_000_000</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@summarize</span>(median_budget <span class="op">=</span> <span class="fu">median</span>(<span class="fu">skipmissing</span>(budget)),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>             mean_budget <span class="op">=</span> <span class="fu">mean</span>(<span class="fu">skipmissing</span>(budget)))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<div><div style="float: left;"><span>5×5 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
+<div><div style="float: left;"><span>1×2 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
 <table class="data-frame table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Row</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">title</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">year</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">length</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">budget</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">rating</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">median_budget</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">mean_budget</th>
 </tr>
 <tr class="odd subheader headerLastRow">
 <th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int32">Int32</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int32">Int32</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Int32}">Int32?</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td class="rowNumber" style="text-align: right; font-weight: bold;">1</td>
-<td style="text-align: left;">$</td>
-<td style="text-align: right;">1971</td>
-<td style="text-align: right;">121</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">6.4</td>
-</tr>
-<tr class="even">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">2</td>
-<td style="text-align: left;">$1000 a Touchdown</td>
-<td style="text-align: right;">1939</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">6.0</td>
-</tr>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">3</td>
-<td style="text-align: left;">$21 a Day Once a Month</td>
-<td style="text-align: right;">1941</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">8.2</td>
-</tr>
-<tr class="even">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">4</td>
-<td style="text-align: left;">$40,000</td>
-<td style="text-align: right;">1996</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">8.2</td>
-</tr>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">5</td>
-<td style="text-align: left;">$50,000 Climax Show, The</td>
-<td style="text-align: right;">1975</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">13.4125</td>
 </tr>
 </tbody>
 </table>
@@ -433,74 +349,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="使用区间range-选取-5-列" class="level2">
-<h2 class="anchored" data-anchor-id="使用区间range-选取-5-列">使用区间(range) 选取 5 列</h2>
-<div id="b3958cd5" class="cell" data-execution_count="4">
+<section id="联合使用-group_by和summarize" class="level2">
+<h2 class="anchored" data-anchor-id="联合使用-group_by和summarize">3. 联合使用 <code>@group_by</code>和<code>@summarize()</code></h2>
+<div id="2ed497b7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@chain</span> movies <span class="cf">begin</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@select</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@slice</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@group_by</span>(year)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@summarise</span>(n <span class="op">=</span> <span class="fu">nrow</span>())</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@arrange</span>(<span class="fu">desc</span>(year))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@slice</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<div><div style="float: left;"><span>5×5 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
+<div><div style="float: left;"><span>5×2 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
 <table class="data-frame table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Row</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">title</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">year</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">length</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">budget</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">rating</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">n</th>
 </tr>
 <tr class="odd subheader headerLastRow">
 <th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th" title="Int32">Int32</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int32">Int32</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Int32}">Int32?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int64">Int64</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td class="rowNumber" style="text-align: right; font-weight: bold;">1</td>
-<td style="text-align: left;">$</td>
-<td style="text-align: right;">1971</td>
-<td style="text-align: right;">121</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">6.4</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">349</td>
 </tr>
 <tr class="even">
 <td class="rowNumber" style="text-align: right; font-weight: bold;">2</td>
-<td style="text-align: left;">$1000 a Touchdown</td>
-<td style="text-align: right;">1939</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">1945</td>
 </tr>
 <tr class="odd">
 <td class="rowNumber" style="text-align: right; font-weight: bold;">3</td>
-<td style="text-align: left;">$21 a Day Once a Month</td>
-<td style="text-align: right;">1941</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">8.2</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">2158</td>
 </tr>
 <tr class="even">
 <td class="rowNumber" style="text-align: right; font-weight: bold;">4</td>
-<td style="text-align: left;">$40,000</td>
-<td style="text-align: right;">1996</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">8.2</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">2168</td>
 </tr>
 <tr class="odd">
 <td class="rowNumber" style="text-align: right; font-weight: bold;">5</td>
-<td style="text-align: left;">$50,000 Climax Show, The</td>
-<td style="text-align: right;">1975</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">2121</td>
 </tr>
 </tbody>
 </table>
@@ -911,13 +808,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/movie dataset.html" class="pagination-link  aria-label=" movie="" dataset"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Movie dataset</span>
+      <a href="../chapters/@mutate.html" class="pagination-link  aria-label=" `@mutate`"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><code>@mutate</code></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/@rename.html" class="pagination-link" aria-label="`@rename`">
-        <span class="nav-page-text"><code>@rename</code></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/@filter.html" class="pagination-link" aria-label="`@filter`">
+        <span class="nav-page-text"><code>@filter</code></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,20 @@
+# `@group_by`  {.unnumbered}
+
+```{julia}
+include("./utils.jl");
+```
+
+## 1. 联合使用`@group_by()` , `@mutate()`
+`@group_by()` 对原始 dataframe 分组后,  `@mutate()` 在每个 subgroup-dataframe中
+分别执行操作
+
+下面操作按照年为单位计算电影评分均值:
+```{julia}
+df2=@chain movies begin
+    @group_by(year)
+    @mutate(mean_yearly_rating = mean(skipmissing(rating)))
+    @select(year,rating, mean_yearly_rating)
+    @ungroup   #合并 subgroup dataframe
+    @slice(1:5)
+end
+```

@@ -1,0 +1,36 @@
+# `@summarize`  {.unnumbered}
+
+```{julia}
+include("./utils.jl");
+```
+
+## 1. using `summarize()`  聚合显示总电影数
+```{julia}
+@chain movies begin
+    @summarize(n = nrow())
+end
+```
+
+## 2. 使用 `@summarize()` 显示电影均值和中位数
+```{julia}
+
+@chain movies begin
+  @mutate(budget = budget / 1_000_000)
+  @summarize(median_budget = median(skipmissing(budget)),
+             mean_budget = mean(skipmissing(budget)))
+  
+end
+```
+
+## 3. 联合使用 `@group_by`和`@summarize()`
+
+```{julia}
+@chain movies begin
+  @group_by(year)
+  @summarise(n = nrow())
+  @arrange(desc(year))
+  @slice(1:5)
+end
+```
+
+

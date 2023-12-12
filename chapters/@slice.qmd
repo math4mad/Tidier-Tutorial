@@ -1,0 +1,32 @@
+# `@slice` {.unnumbered}
+
+```{julia}
+include("./utils.jl");
+```
+
+
+##  1. 简单实例
+
+```{julia}
+@chain movies begin
+    @slice(1:5)
+    @select(1:5)
+end
+```
+
+## 2. 使用 range作为条件
+```{julia}
+@chain movies begin
+  @slice(range(start = 1, step = 2, stop = 7))
+  @select(1:5)
+end
+```
+
+Julia的`range` 都可以使用,例如:
+
+```{julia}
+@chain movies begin
+  @slice(1:2:7)
+  @select(1:4)
+end
+```
